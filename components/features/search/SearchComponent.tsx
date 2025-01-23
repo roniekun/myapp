@@ -6,7 +6,9 @@ import SearchSuggestionModal from "./ui/SearchSuggestions";
 import { useAppSelector } from "@/redux/hooks/hooks";
 
 const SearchComponent: React.FC = () => {
-  const { isInfocus,query,searchSuggestions } = useAppSelector((state) => state.search);
+  const { isInfocus, query, searchSuggestions } = useAppSelector(
+    (state) => state.search
+  );
 
   return (
     <div
@@ -15,8 +17,8 @@ const SearchComponent: React.FC = () => {
       )}
     >
       <SearchForm />
-      {isInfocus && query && searchSuggestions.length > 0 && (
-          <SearchSuggestionModal />
+      {(isInfocus || query) && searchSuggestions.length > 0 && (
+        <SearchSuggestionModal />
       )}
     </div>
   );

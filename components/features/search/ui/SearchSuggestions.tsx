@@ -15,6 +15,7 @@ import {
 
 import { SearchHistoryProps } from "@/redux/definitions/search-types";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
+import { div } from "framer-motion/client";
 
 const SearchSuggestionModal: React.FC = () => {
   const router = useRouter();
@@ -134,7 +135,18 @@ const SearchSuggestionModal: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col absolute z-50 top-full justify-center items-center mt-1 w-full p-4 left-0 rounded-md bg-zinc-200">
+    <div className="flex flex-col absolute z-50 top-full justify-center items-center mt-1 w-full py-4 px-2 left-0 rounded-md bg-zinc-200">
+      {searchItems.length > 0 && (
+        <div className="justify-between flex items-center text-xs w-full font-semibold relative px-2 text-zinc-700">
+          <span >Recent</span>
+          <button
+            onClick={handleClear}
+            className="p-2 relative justify-end flex ml-auto text-blue-500   w-fit"
+          >
+            Delete history
+          </button>
+        </div>
+      )}
       <ul className="relative flex flex-col w-full justify-center items-center rounded-b-md h-auto gap-y-1 ">
         {searchSuggestions.map((item, idx) => (
           <li
@@ -150,8 +162,8 @@ const SearchSuggestionModal: React.FC = () => {
                   onClick={() => handleClickHistory(idx)}
                   className={`${
                     (selectedIndex === idx || hoveredItem === idx) &&
-                    "bg-neutral-900 bg-opacity-20 text-zinc-600"
-                  } cursor-pointer flex text-left relative`}
+                    "bg-neutral-900 bg-opacity-10 text-zinc-500"
+                  } cursor-pointer px-2 flex text-left relative flex-1`}
                 >
                   {item.search}
                 </a>
@@ -168,27 +180,19 @@ const SearchSuggestionModal: React.FC = () => {
                   onMouseDown={() => {
                     handleMouseDown(idx);
                   }}
-                  className="cursor-pointer flex text-left flex-1 relative gap-x-1"
+                  className={`${
+                    (selectedIndex === idx || hoveredItem === idx) &&
+                    "bg-neutral-900 bg-opacity-10 text-zinc-600"
+                  } cursor-pointer px-2 flex text-left relative flex-1`}
                 >
                   {item.title}
                 </a>
                 <span className="read-only" />
               </>
             ) : null}
-            
           </li>
         ))}
-        
       </ul>
-      
-      {searchSuggestions.length > 0 && (
-        <button
-          onClick={handleClear}
-          className="text-xs p-2 relative justify-end flex ml-auto   w-fit"
-        >
-          delete history
-        </button>
-      )}
     </div>
   );
 };
