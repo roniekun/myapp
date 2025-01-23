@@ -18,7 +18,9 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 
 const SearchSuggestionModal: React.FC = () => {
   const router = useRouter();
-  const { searchItems, selectedIndex} = useAppSelector((state) => state.search);
+  const { searchItems, selectedIndex } = useAppSelector(
+    (state) => state.search
+  );
   const [deletedItem, setDeletedItem] = useState<SearchHistoryProps | null>(
     null
   );
@@ -38,6 +40,7 @@ const SearchSuggestionModal: React.FC = () => {
     const textContent = suggestionRefs.current[idx]?.textContent ?? "";
     dispatch(setQuery(textContent));
     dispatch(toggleOpenSearch());
+    dispatch(setInfocus(false));
     router.replace(`/search_result?query=${encodeURIComponent(textContent)}`);
   };
 
@@ -98,7 +101,7 @@ const SearchSuggestionModal: React.FC = () => {
         }
       );
 
-      setSearchSuggestions(updatedSearchSuggestions);
+      dispatch(setSearchSuggestions(updatedSearchSuggestions));
     }
   }, [deletedItem]); //filteredSearchItems, setFilteredSearchItems
 
@@ -125,52 +128,68 @@ const SearchSuggestionModal: React.FC = () => {
     } else return;
   }, [selectedIndex]);
 
+  const handleClear = () => {
+    dispatch(setSearchSuggestions([]));
+    dispatch(setSearchItems([]));
+  };
 
   return (
-    <ul className="relative flex flex-col w-full rounded-b-md h-auto gap-y-1 overflow-y-scroll ">
-      {searchSuggestions.map((item, idx) => (
-        <li
-          key={idx}
-          ref={(el) => setRef(el, idx)}
-          onMouseEnter={() => handleMouseHover(idx)}
-          onMouseLeave={handleMouseLeave}
-          className={`${
-            (selectedIndex === idx || hoveredItem === idx) &&
-            "bg-neutral-900 bg-opacity-10"
-          } flex list-none w-full relative justify-between items-center gap-x-1 rounded-md`}
-        >
-          {/* Conditional rendering based on 'search' or 'title' properties */}
-          {"search" in item ? (
-            <>
-              <a
-                onClick={() => handleClickHistory(idx)}
-                className="cursor-pointer flex text-left flex-1 relative gap-x-1"
-              >
-                {item.search}
-              </a>
+    <div className="flex flex-col absolute z-50 top-full justify-center items-center mt-1 w-full p-4 left-0 rounded-md bg-zinc-200">
+      <ul className="relative flex flex-col w-full justify-center items-center rounded-b-md h-auto gap-y-1 ">
+        {searchSuggestions.map((item, idx) => (
+          <li
+            key={idx}
+            ref={(el) => setRef(el, idx)}
+            onMouseEnter={() => handleMouseHover(idx)}
+            onMouseLeave={handleMouseLeave}
+            className={` flex w-full relative justify-between items-center gap-x-1 rounded-md overflow-hidden`}
+          >
+            {"search" in item ? (
+              <>
+                <a
+                  onClick={() => handleClickHistory(idx)}
+                  className={`${
+                    (selectedIndex === idx || hoveredItem === idx) &&
+                    "bg-neutral-900 bg-opacity-20 text-zinc-600"
+                  } cursor-pointer flex text-left relative`}
+                >
+                  {item.search}
+                </a>
 
-              <IoIosClose
-                className="cursor-pointer relative"
-                onClick={() => handleDelete(item.id)}
-              />
-            </>
-          ) : "title" in item ? (
-            <div className="flex items-center gap-x-1">
-              <a
-                onClick={() => handleClickSearch(idx)}
-                onMouseDown={() => {
-                  handleMouseDown(idx);
-                }}
-                className="cursor-pointer flex text-left flex-1 relative gap-x-1"
-              >
-                {item.title}
-              </a>
-              <span className="read-only" />
-            </div>
-          ) : null}
-        </li>
-      ))}
-    </ul>
+                <IoIosClose
+                  className="cursor-pointer relative"
+                  onClick={() => handleDelete(item.id)}
+                />
+              </>
+            ) : "title" in item ? (
+              <>
+                <a
+                  onClick={() => handleClickSearch(idx)}
+                  onMouseDown={() => {
+                    handleMouseDown(idx);
+                  }}
+                  className="cursor-pointer flex text-left flex-1 relative gap-x-1"
+                >
+                  {item.title}
+                </a>
+                <span className="read-only" />
+              </>
+            ) : null}
+            
+          </li>
+        ))}
+        
+      </ul>
+      
+      {searchSuggestions.length > 0 && (
+        <button
+          onClick={handleClear}
+          className="text-xs p-2 relative justify-end flex ml-auto   w-fit"
+        >
+          delete history
+        </button>
+      )}
+    </div>
   );
 };
 

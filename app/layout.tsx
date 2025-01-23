@@ -24,7 +24,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <StateProvider>
-          <main className="flex flex-grow flex-col justify-center items-center w-screen">
+          <main className="flex flex-grow flex-col justify-center items-center ">
             <Header />
             <Navbar />
             {children}

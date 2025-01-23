@@ -1,7 +1,6 @@
 import { ContentDataProps } from "@/redux/definitions/search-types";
 import { contentData } from "@/constants/search-data";
 import { MdOutlineSearch } from "react-icons/md";
-import { IoIosClose } from "react-icons/io";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import {
@@ -49,7 +48,7 @@ const SearchForm = () => {
           data.title.toLowerCase().trim().includes(formattedQuery)
         );
         const newFilteredSearchItem = searchItems.filter((item) =>
-          item.search.toLowerCase().trim().includes(formattedQuery)
+          item.search.toLowerCase().trim().startsWith(formattedQuery)
         );
         setFilteredSearchItems(newFilteredSearchItem);
 
@@ -69,6 +68,21 @@ const SearchForm = () => {
     }
   };
 
+  const handleClickIcon = () => {
+    const searchQuery = inputRef.current?.value;
+    if (!searchQuery) return;
+    const newSearch: SearchHistoryProps = {
+      search: query,
+      id: searchItems.length + 1,
+      date: Date.now(),
+    };
+    //   dispatch(setQuery(enteredQuery));
+    dispatch(addSearchItem(newSearch));
+    dispatch(setInfocus(false));
+    dispatch(setOpenSearch(false));
+    router.push(`/search_result?query=${encodeURIComponent(searchQuery)}`);
+    dispatch(setQuery(""));
+  };
   //execute search
   const handleSearch = async (formData: FormData) => {
     const searchQuery = formData.get("query")?.toString().trim();
@@ -83,6 +97,7 @@ const SearchForm = () => {
     dispatch(setInfocus(false));
     dispatch(setOpenSearch(false));
     router.push(`/search_result?query=${encodeURIComponent(searchQuery)}`);
+    dispatch(setQuery(""));
   };
   //for keyboard functions
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -107,11 +122,11 @@ const SearchForm = () => {
     if (!items.length) return;
   };
 
-  //clears the input field
-  const handleClear = () => {
-    dispatch(setInfocus(false));
-    dispatch(setQuery(""));
-  };
+  // //clears the input field
+  // const handleClearInput = () => {
+  //   dispatch(setInfocus(false));
+  //   dispatch(setQuery(""));
+  // };
 
   //realtime updates for suggestions
   useEffect(() => {
@@ -124,40 +139,53 @@ const SearchForm = () => {
 
   //updates for suggestions when user focus to the input
   useEffect(() => {
-    dispatch(
-      setSearchSuggestions(
-        query.length > 0 ? [...searchSuggestions] : [...searchItems]
-      )
-    );
+    if (isInfocus) {
+      dispatch(
+        setSearchSuggestions(
+          query.length > 0 ? [...searchSuggestions] : [...searchItems]
+        )
+      );
+    }
+    console.log(isInfocus);
   }, [isInfocus]);
 
   //click event for input field
-  const handleClick = (e: React.MouseEvent<HTMLInputElement> | null) => {
+  const handleClick = () => {
     dispatch(setInfocus(true));
-    setSelectedIndex(-1);
+    dispatch(setSearchSuggestions([...searchItems]));
+    dispatch(setSelectedIndex(-1));
   };
 
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    // Check if the blur event is leaving the entire component
+    e.stopPropagation();
+
+    setTimeout(() => {
+      dispatch(setInfocus(false));
+    }, 150);
+  };
   return (
     <form
       action={handleSearch}
-      className="flex relative  flex-row items-center"
+      className="flex relative  flex-row items-center "
     >
       <input
         value={query ?? ""}
-        onKeyDown={handleKeyDown}
+        onKeyDown={(e) => handleKeyDown(e)}
         name="query"
         autoComplete="off"
         ref={inputRef}
-        onClick={(e) => {
-          handleClick(e);
-        }}
+        onClick={handleClick}
         onChange={(e) => handleInputChange(e)}
         placeholder={placeholder}
         style={{ padding: 4 }}
-        className="relative border-b rounded-md w-[200px] h-auto p-2"
+        onBlur={(e) => handleBlur(e)}
+        className="relative rounded-md w-[200px] bg-zinc-200  h-auto p-2 focus:outline-none"
       />
-      <div className="flex justify-center h-full items-center rounded-r-full cursor-pointer">
-        {isInfocus ? <IoIosClose onClick={handleClear} /> : <MdOutlineSearch />}
+      <div className="flex w-7 justify-center h-full items-center  rounded-r-full cursor-pointer">
+        <div onClick={handleClickIcon}>
+          <MdOutlineSearch width={8} height={8} />
+        </div>
       </div>
     </form>
   );
