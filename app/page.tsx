@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <div className=" min-h-screen relative w-full">
       <div className="flex flex-col w-full gap-4 relative justify-center items-center">
-        <RecentWorks /> <EndNote />
+        {""}
       </div>
     </div>
   );

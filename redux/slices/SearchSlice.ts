@@ -21,8 +21,10 @@ const initialState: SearchState = {
   isOpenSearch: false,
   isInfocus: false,
   searchItems: searchHistory,
-  selectedIndex: -1,
+  filteredResults: [],
+  filteredSearchItems: [],
   searchSuggestions: [],
+  selectedIndex: -1,
   query: "",
 };
 
@@ -48,6 +50,15 @@ const searchSlice = createSlice({
       if (state.searchItems) {
         localStorage.setItem("history", JSON.stringify(state.searchItems));
       }
+    },
+    setFilteredSearchItems: (
+      state,
+      action: PayloadAction<SearchHistoryProps[]>
+    ) => {
+      state.filteredSearchItems = action.payload;
+    },
+    setFilteredResults: (state, action: PayloadAction<ContentDataProps[]>) => {
+      state.filteredResults = action.payload;
     },
 
     setQuery: (state, action: PayloadAction<string>) => {
@@ -92,6 +103,8 @@ export const {
   setInfocus,
   setSearchItems,
   setQuery,
+  setFilteredResults,
+  setFilteredSearchItems,
   setSearchSuggestions,
   setSelectedIndex,
   addSearchItem,

@@ -18,7 +18,7 @@ const Cards = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="cursor-pointer relative flex gap-4  w-full bg-neutral-100 h-[50vh]"
+          className="cursor-pointer relative flex gap-4  w-full bg-neutral-100 h-[50vh] rounded-md overflow-hidden"
           key={item.id}
           onClick={() => handleClick(item.id)}
         >

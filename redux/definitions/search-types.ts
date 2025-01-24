@@ -15,6 +15,8 @@ export interface SearchState {
   isOpenSearch: boolean;
   isInfocus: boolean;
   searchItems: SearchHistoryProps[];
+  filteredSearchItems: SearchHistoryProps[];
+  filteredResults: ContentDataProps[];
   selectedIndex: number;
   searchSuggestions: (SearchHistoryProps | ContentDataProps)[];
   query: string;

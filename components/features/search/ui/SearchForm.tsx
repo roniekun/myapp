@@ -1,7 +1,4 @@
-import { ContentDataProps } from "@/redux/definitions/search-types";
-import { contentData } from "@/constants/search-data";
 import { MdOutlineSearch } from "react-icons/md";
-
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import {
   setOpenSearch,
@@ -11,60 +8,36 @@ import {
   setSelectedIndex,
   setSearchSuggestions,
 } from "@/redux/slices/SearchSlice";
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import debounce from "lodash/debounce";
 import { SearchHistoryProps } from "@/redux/definitions/search-types";
-
-export type SearchProps = {
-  placeholder?: string;
-  className?: string;
-};
+import { useDebouncedHandleInputChange } from "../hooks/debounce";
 
 const SearchForm = () => {
   const dispatch = useAppDispatch();
-  const { isInfocus, searchItems, query, selectedIndex, searchSuggestions } =
-    useAppSelector((state) => state.search);
+  const {
+    isInfocus,
+    searchItems,
+    query,
+    selectedIndex,
+    searchSuggestions,
+    filteredResults,
+    filteredSearchItems,
+  } = useAppSelector((state) => state.search);
   const placeholder = "search";
-  const [filteredSearchItems, setFilteredSearchItems] = useState<
-    SearchHistoryProps[]
-  >([]);
-  const [filteredResult, setFilteredResult] = useState<ContentDataProps[]>([]);
+
   const inputRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
 
   // filtering the result every 300 miliseconds as value of the query changes using
-  // useCallback and debounce/lodash
-  const debounceHandleInputChange = useCallback(
-    debounce((enteredKey: string) => {
-      if (enteredKey === "") {
-        setFilteredSearchItems([...searchItems]);
-        setFilteredResult([]);
-      } else {
-        dispatch(setQuery(enteredKey));
-        const formattedQuery = enteredKey.trim().toLowerCase();
-
-        const filteredData = contentData?.filter((data) =>
-          data.title.toLowerCase().trim().includes(formattedQuery)
-        );
-        const newFilteredSearchItem = searchItems.filter((item) =>
-          item.search.toLowerCase().trim().startsWith(formattedQuery)
-        );
-        setFilteredSearchItems(newFilteredSearchItem);
-
-        setFilteredResult(filteredData);
-      }
-    }, 300),
-    [contentData, searchItems, isInfocus]
-  );
+  const debounceHandleInputChange = useDebouncedHandleInputChange();
 
   //realtime changes of inputs value
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement> | null) => {
     if (e) {
-      const enteredKey = e.target.value;
-      dispatch(setQuery(enteredKey));
       //calling the debounced search result
-      debounceHandleInputChange(enteredKey);
+      dispatch(setQuery(e.target.value));
+      debounceHandleInputChange(e.target.value);
     }
   };
 
@@ -130,8 +103,10 @@ const SearchForm = () => {
 
   //realtime updates for suggestions
   useEffect(() => {
-    dispatch(setSearchSuggestions([...filteredSearchItems, ...filteredResult]));
-  }, [filteredSearchItems, filteredResult]); //merging suggestions
+    dispatch(
+      setSearchSuggestions([...filteredSearchItems, ...filteredResults])
+    );
+  }, [filteredSearchItems, filteredResults]); //merging suggestions
 
   useEffect(() => {
     console.log(searchSuggestions);
@@ -156,14 +131,15 @@ const SearchForm = () => {
     dispatch(setSelectedIndex(-1));
   };
 
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    // Check if the blur event is leaving the entire component
-    e.stopPropagation();
+  // const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+  //   // Check if the blur event is leaving the entire component
+  //   e.stopPropagation();
 
-    setTimeout(() => {
-      dispatch(setInfocus(false));
-    }, 150);
-  };
+  //   setTimeout(() => {
+  //     dispatch(setInfocus(false));
+  //   }, 150);
+  // };
+
   return (
     <form
       action={handleSearch}
@@ -179,7 +155,7 @@ const SearchForm = () => {
         onChange={(e) => handleInputChange(e)}
         placeholder={placeholder}
         style={{ padding: 4 }}
-        onBlur={(e) => handleBlur(e)}
+        // onBlur={(e) => handleBlur(e)}
         className="relative rounded-md w-[200px] bg-zinc-200  h-auto p-2 focus:outline-none"
       />
       <div className="flex w-7 justify-center h-full items-center  rounded-r-full cursor-pointer">
