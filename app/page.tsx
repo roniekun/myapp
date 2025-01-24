@@ -17,8 +17,10 @@
 //     },
 //   };
 // }
-import RecentWorks from "@/components/showcase/RecentWorks";
-import EndNote from "@/components/showcase/EndNote";
+// import RecentWorks from "@/components/showcase/RecentWorks";
+// import EndNote from "@/components/showcase/EndNote";
+
+import ContactForm from "@/components/features/form/ContactForm";
 
 export default function Home() {
   // const dispatch = useAppDispatch();
@@ -31,8 +33,8 @@ export default function Home() {
 
   return (
     <div className=" min-h-screen relative w-full">
-      <div className="flex flex-col w-full gap-4 relative justify-center items-center">
-        {""}
+      <div className="flex flex-col w-full gap-4 p-4  relative justify-center items-center">
+        <ContactForm />
       </div>
     </div>
   );

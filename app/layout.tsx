@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import StateProvider from "@/provider/StateProvider";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+// import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { user } from "@/lib/constants";
 import { geistMono, geistSans } from "@/components/ui/fonts/fonts";
-import Container from "@/components/layout/Container";
+// import Container from "@/components/layout/Container";
 
 export const metadata: Metadata = {
   title: `${user.name}`,
@@ -28,9 +28,9 @@ export default function RootLayout({
             <Header />
             <Navbar />
             {children}
-            <Container classNames="justify-center items-center bg-black w-full relative">
+            {/* <Container classNames="justify-center items-center bg-zinc-200 w-full relative">
               <Footer />
-            </Container>
+            </Container> */}
           </main>
         </StateProvider>
       </body>

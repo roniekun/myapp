@@ -7,12 +7,12 @@ import SearchSuggestionModal from "./ui/SearchSuggestions";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks/hooks";
 import { setInfocus } from "@/redux/slices/SearchSlice";
 import { AnimatePresence, motion } from "framer-motion";
-import { div } from "framer-motion/client";
 
 const SearchComponent: React.FC = () => {
   const { isInfocus, searchSuggestions } = useAppSelector(
     (state) => state.search
   );
+
   const dispatch = useAppDispatch();
   const searchRef = useRef<HTMLDivElement>(null);
 
@@ -29,6 +29,14 @@ const SearchComponent: React.FC = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dispatch]);
+
+  const deviceType = useAppSelector((state) => {
+    state.device.deviceType;
+  });
+
+  useEffect(() => {
+    dispatch(setInfocus(false));
+  }, [deviceType]);
 
   return (
     <div

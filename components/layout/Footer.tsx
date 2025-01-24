@@ -7,7 +7,7 @@ const Footer = () => {
   const date = new Date();
   const listStyle = "flex gap-1 flex-col mr-auto w-fit h-fit p-4 ";
   return (
-    <footer className="min-h-[40vh] text-gray-100 flex relative w-screen max-w-[1400px]  p-4 flex-wrap whitespace-nowrap">
+    <footer className="min-h-[40vh] flex relative w-screen max-w-[1400px]  p-4 flex-wrap whitespace-nowrap text-zinc=700">
       {" "}
       <div className={listStyle}>
         <p className="uppercase my-4">Explore</p>
