@@ -1,6 +1,5 @@
 import React from "react";
 import Cards from "../ui/Cards";
-import { div } from "framer-motion/client";
 
 const RecentWorks = () => {
   return (

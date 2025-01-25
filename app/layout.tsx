@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./_styles/font.css";
 import StateProvider from "@/app/_provider/StateProvider";
 import Header from "@/app/_components/layout/Header";
-import Navbar from "@/app/_components/layout/Navbar";
 import { user } from "@/app/_lib/constants";
-import { geistMono, geistSans } from "@/app/_components/ui/fonts/fonts";
-// import Container from "./_components/layout/Container";
-// import Footer from "./_components/layout/Footer";
 
 export const metadata: Metadata = {
   title: `${user.name}`,
@@ -20,13 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`$ antialiased`}>
         <StateProvider>
-          <main className="flex flex-grow flex-col justify-center items-center text-sm my-[--header-height]">
+          <main
+            style={{ fontFamily: "FC" }}
+            className="flex flex-grow flex-col justify-center items-center text-sm"
+          >
             <Header />
-            <Navbar />
             {children}
             {/* <Container classNames="justify-center items-center bg-zinc-200 w-full relative">
               <Footer />

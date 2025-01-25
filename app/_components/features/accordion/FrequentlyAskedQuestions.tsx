@@ -21,11 +21,11 @@ const FrequentlyAskedQuestions = () => {
   return (
     <section className="w-full mx-auto my-8 space-y-3 sm:px-[10vw]">
       <div className="flex flex-col h-auto w-full p-4  md:p-12 rounded-md">
-        <h1 className="mt-5 font-black md:text-xl text-lg relative self-center my-10">
+        <h1 className="mt-5 font-medium md:text-xl text-lg relative self-center my-10">
           <span className="">Questions? </span>
           Answer.
         </h1>
-        <ul className="md:text-base text-sm">
+        <ul className="md:text-lg text-base">
           {data.map((item, idx) => (
             <li
               key={idx}
@@ -36,7 +36,7 @@ const FrequentlyAskedQuestions = () => {
             >
               <button
                 onClick={() => handleToggle(idx)}
-                className="w-full py-4 px-2 text-left flex justify-between items-center font-black text-[--text-color-secondary] hover:text-[--text-color-primary]"
+                className="w-full py-4 px-2 text-left flex justify-between items-center font-medium text-[--text-color-secondary] hover:text-[--text-color-primary]"
               >
                 <span>{item.question}</span>
                 <div
@@ -44,7 +44,7 @@ const FrequentlyAskedQuestions = () => {
                     activeIndices.includes(idx) && "rotate-45"
                   }`}
                 >
-                  <GrAdd />
+                  <GrAdd size={16} />
                 </div>
               </button>
               <motion.div

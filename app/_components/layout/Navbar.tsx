@@ -32,20 +32,23 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -5 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
-            className="fixed backdrop-blur-md h-full z-10  top-0 bg-blue-700 right-0 w-full p-4"
+            className="fixed h-screen bg-[--background] top-0 right-0 w-full p-4 justify-center items-center"
           >
-            <Container classNames="bg-opacity-60 shadow-md rounded-sm gap-4 flex flex-col ml-auto my-[--header-height]">
+            <Container classNames="bg-opacity-60 items-center rounded-sm gap-4 w-full relative w-fit flex flex-col my-[--header-height]">
               <MenuItems
-                className="font-semibold text-lg hover:text-opacity-80"
+                className="font-medium text-center text-xl w-fit hover:text-opacity-80"
                 onClick={handleClick}
               />
             </Container>
-            <Container classNames="bg-opacity-60 shadow-md rounded-sm gap-4 flex flex-col ml-auto">
+            <Container classNames="gap-1 flex w-fit flex items-center  justify-center">
+              <LinkItems
+                className="w-fit bg-black flex justify-center"
+                displayIcon
+              />
+            </Container>{" "}
+            <div className=" w-screen mt-20 flex justify-center items-center">
               <ToggleThemeButton />
-            </Container>
-            <Container classNames="gap-1 flex w-fit">
-              <LinkItems displayIcon />
-            </Container>
+            </div>
           </motion.nav>
         )}
       </AnimatePresence>

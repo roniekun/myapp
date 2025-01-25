@@ -10,7 +10,7 @@ const Logo = () => {
   };
   return (
     <div>
-      <a  className="font-black text-lg" onClick={handleClick} href="/">
+      <a className="font-black  text-lg" onClick={handleClick} href="/">
         MyApp
       </a>
     </div>

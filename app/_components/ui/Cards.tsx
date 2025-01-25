@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import data from "./data";
+import data from "./definitons/data";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 

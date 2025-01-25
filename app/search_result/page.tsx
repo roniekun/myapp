@@ -28,10 +28,10 @@ const SearchResultPage = async ({
   });
 
   return (
-    <div className="flex flex-col min-h-screen w-full relative">
+    <div className="flex flex-col min-h-screen w-full relative pt-[--header-height]">
       <Suspense fallback={<h2>Loading results...</h2>}>
         {filteredData.length > 0 ? (
-          <Container classNames="flex flex-col gap-1 w-full">
+          <Container classNames="flex flex-col gap-1 w-full ">
             {filteredData.map((data, idx) => (
               <div key={idx}>
                 <Link href={`/search_result/${data.id}`}>
