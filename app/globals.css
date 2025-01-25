@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --header-height: 4rem;
+  --footer-height: 10rem;
+}
 body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, and Edge */
 }

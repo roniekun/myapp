@@ -179,7 +179,8 @@ const SearchSuggestionModal: React.FC = () => {
                 </a>
 
                 <IoIosClose
-                  className="cursor-pointer relative mr-3"
+                  size={20}
+                  className="cursor-pointer relative mr-3 text-zinc-700"
                   onClick={() => handleDelete(item.id)}
                 />
               </>

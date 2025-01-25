@@ -1,5 +1,5 @@
 import React from "react";
-import LinkButton from "@/components/common/buttons/LinkButton";
+import LinkButton from "@/app/_components/common/buttons/LinkButton";
 
 const Features = async ({ params }: { params: { id: number } }) => {
   const { id } = await params;

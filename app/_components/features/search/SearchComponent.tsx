@@ -12,6 +12,7 @@ const SearchComponent: React.FC = () => {
   const { isInfocus, searchSuggestions } = useAppSelector(
     (state) => state.search
   );
+  const theme = useAppSelector((state) => state.theme.theme);
 
   const dispatch = useAppDispatch();
   const searchRef = useRef<HTMLDivElement>(null);
@@ -42,10 +43,11 @@ const SearchComponent: React.FC = () => {
     <div
       ref={searchRef}
       className={twMerge(
-        `flex relative flex-col h-fit top-0 px-4 py-1 rounded-md overflow-visible bg-zinc-200 hover:outline outline-1`
+        `flex relative flex-col h-fit top-0 px-4 py-1 overflow-visible focus:outline outline-1 text-sm bg-white rounded-md bg-opacity-5 shadow-md`
       )}
     >
       <SearchForm />
+
       <AnimatePresence>
         {isInfocus && searchSuggestions.length !== 0 && (
           <motion.div

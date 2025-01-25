@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import CategoryItems from "@/components/lib/CategoryItems";
+import CategoryItems from "@/app/_components/lib/CategoryItems";
 // import { categories } from "@/components/lib/CategoryItems";
 
 export default function Page() {

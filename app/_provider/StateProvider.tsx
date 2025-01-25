@@ -2,9 +2,9 @@
 import React from "react";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
-import DeviceListener from "@/lib/listeners/DeviceListener";
-import ScrollListener from "@/lib/listeners/ScrollListener";
-import ThemeListener from "@/lib/listeners/ThemeListener";
+import DeviceListener from "@/app/_lib/listeners/DeviceListener";
+import ScrollListener from "@/app/_lib/listeners/ScrollListener";
+import ThemeListener from "@/app/_lib/listeners/ThemeListener";
 
 interface StateProviderProps {
   children: React.ReactNode;

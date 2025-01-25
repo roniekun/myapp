@@ -5,11 +5,11 @@ import {
 } from "@/redux/slices/SearchSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { useCallback } from "react";
-import { contentData } from "@/constants/search-data";
+import { contentData } from "@/app/constants/search-data";
 
 export const useDebouncedHandleInputChange = () => {
   const dispatch = useAppDispatch();
-  const { searchItems, isInfocus} = useAppSelector((state) => state.search);
+  const { searchItems, isInfocus } = useAppSelector((state) => state.search);
 
   const debounceHandleInputChange = useCallback(
     debounce((enteredKey: string) => {

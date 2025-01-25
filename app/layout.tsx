@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import StateProvider from "@/provider/StateProvider";
-import Header from "@/components/layout/Header";
-// import Footer from "@/components/layout/Footer";
-import Navbar from "@/components/layout/Navbar";
-import { user } from "@/lib/constants";
-import { geistMono, geistSans } from "@/components/ui/fonts/fonts";
-// import Container from "@/components/layout/Container";
+import StateProvider from "@/app/_provider/StateProvider";
+import Header from "@/app/_components/layout/Header";
+import Navbar from "@/app/_components/layout/Navbar";
+import { user } from "@/app/_lib/constants";
+import { geistMono, geistSans } from "@/app/_components/ui/fonts/fonts";
+// import Container from "./_components/layout/Container";
+// import Footer from "./_components/layout/Footer";
 
 export const metadata: Metadata = {
   title: `${user.name}`,
@@ -24,7 +24,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <StateProvider>
-          <main className="flex flex-grow flex-col justify-center items-center ">
+          <main className="flex flex-grow flex-col justify-center items-center text-sm my-[--header-height]">
             <Header />
             <Navbar />
             {children}

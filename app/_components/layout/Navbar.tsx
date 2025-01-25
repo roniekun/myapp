@@ -32,11 +32,11 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -5 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
-            className="abasolute backdrop-blur-md h-full z-10 bg-opacity-70 top-0 right-0 w-full p-4"
+            className="fixed backdrop-blur-md h-full z-10  top-0 bg-blue-700 right-0 w-full p-4"
           >
-            <Container classNames="bg-opacity-60 shadow-md rounded-sm gap-4 flex flex-col ml-auto">
+            <Container classNames="bg-opacity-60 shadow-md rounded-sm gap-4 flex flex-col ml-auto my-[--header-height]">
               <MenuItems
-                className="font-semibold hover:text-opacity-80"
+                className="font-semibold text-lg hover:text-opacity-80"
                 onClick={handleClick}
               />
             </Container>

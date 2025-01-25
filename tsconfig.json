@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/ui/data.js"
+    "app/_components/ui/data.js"
   ],
   "exclude": ["node_modules"]
 }

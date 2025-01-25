@@ -24,7 +24,7 @@ const SearchForm = () => {
     filteredResults,
     filteredSearchItems,
   } = useAppSelector((state) => state.search);
-  const placeholder = "search";
+  const placeholder = "Search";
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
@@ -156,11 +156,11 @@ const SearchForm = () => {
         placeholder={placeholder}
         style={{ padding: 4 }}
         // onBlur={(e) => handleBlur(e)}
-        className="relative rounded-md w-[200px] bg-zinc-200  h-auto p-2 focus:outline-none"
+        className={`relative rounded-md w-[20vw] bg-transparent  h-auto p-2 focus:outline-none `}
       />
       <div className="flex w-7 justify-center h-full items-center  rounded-r-full cursor-pointer">
         <div onClick={handleClickIcon}>
-          <MdOutlineSearch width={8} height={8} />
+          <MdOutlineSearch size={22} />
         </div>
       </div>
     </form>
