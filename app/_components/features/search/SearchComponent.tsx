@@ -30,9 +30,9 @@ const SearchComponent: React.FC = () => {
     };
   }, [dispatch]);
 
-  const deviceType = useAppSelector((state) => {
-    state.device.deviceType;
-  });
+  const deviceType = useAppSelector((state) => 
+    state.device.deviceType
+  );
 
   useEffect(() => {
     dispatch(setInfocus(false));

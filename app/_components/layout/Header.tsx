@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Logo from "../common/Logo";
 import MenuItems from "../lib/MenuItems";
 import { Rotate as Hamburger } from "hamburger-react";
@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 import Container from "./Container";
 import Navbar from "./Navbar";
 import { twMerge } from "tailwind-merge";
-import { usePathname } from "next/navigation";
 
 interface HeaderProps {
   className?: string;
@@ -20,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   const isOpen = useAppSelector((state) => state.menu.isMenuOpen);
   // const { scrollPosition } = useAppSelector((state) => state.scroll);
   const dispatch = useAppDispatch();
-  
+
   useEffect(() => {
     dispatch(setToggleMenu(false));
   }, [deviceType]);

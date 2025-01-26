@@ -108,9 +108,6 @@ const SearchForm = () => {
     );
   }, [filteredSearchItems, filteredResults]); //merging suggestions
 
-  useEffect(() => {
-    console.log(searchSuggestions);
-  }, [searchSuggestions]);
 
   //updates for suggestions when user focus to the input
   useEffect(() => {

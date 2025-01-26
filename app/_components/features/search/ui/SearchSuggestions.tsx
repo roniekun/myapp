@@ -35,9 +35,6 @@ const SearchSuggestionModal: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(isInfocus);
-  }, [isInfocus]);
 
   const handleClickHistory = (idx: number) => {
     const textContent = suggestionRefs.current[idx]?.textContent ?? "";
