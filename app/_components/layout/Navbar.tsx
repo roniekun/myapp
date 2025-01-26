@@ -29,26 +29,33 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.nav
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            className="fixed h-screen bg-[--background] top-0 right-0 w-full p-4 justify-center items-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed h-screen bg-[--background] text-[--text-color-primary] top-0 right-0 w-full p-4 justify-center items-center"
           >
-            <Container classNames="bg-opacity-60 items-center rounded-sm gap-4 w-full relative w-fit flex flex-col my-[--header-height]">
-              <MenuItems
-                className="font-medium text-center text-xl w-fit hover:text-opacity-80"
-                onClick={handleClick}
-              />
-            </Container>
-            <Container classNames="gap-1 flex w-fit flex items-center  justify-center">
-              <LinkItems
-                className="w-fit bg-black flex justify-center"
-                displayIcon
-              />
-            </Container>{" "}
-            <div className=" w-screen mt-20 flex justify-center items-center">
-              <ToggleThemeButton />
-            </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-opacity-60 items-center justify-center w-full rounded-sm gap-4 relative flex flex-col my-[--header-height]"
+            >
+              <Container className="flex-col w-full justify-center items-center py-10">
+                <MenuItems
+                  className="font-medium text-center text-xl w-fit hover:text-opacity-80"
+                  onClick={handleClick}
+                />
+              </Container>
+              <Container className="gap-1 flex w-fit items-center  justify-center">
+                <LinkItems
+                  className="w-fit bg-black flex justify-center"
+                  displayIcon
+                />
+              </Container>{" "}
+              <div className=" w-screen mt-20 flex justify-center items-center">
+                <ToggleThemeButton />
+              </div>
+            </motion.div>
           </motion.nav>
         )}
       </AnimatePresence>

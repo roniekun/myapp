@@ -10,26 +10,28 @@ const Cards = () => {
 
   const handleClick = (id: number) => {
     router.push(`features/${id}`);
-    console.log(id);
   };
   return (
     <>
-      {data.map((item) => (
+      {data.map((i) => (
         <motion.div
+          key={i.id}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="cursor-pointer relative flex gap-4  w-full bg-neutral-100 h-[50vh] rounded-md overflow-hidden"
-          key={item.id}
-          onClick={() => handleClick(item.id)}
+          className="cursor-pointer relative h-auto w-full aspect-[4/5] overflow-hidden m-auto"
+          onClick={() => handleClick(i.id)}
         >
           <Image
-            key={item.id}
-            alt={item.alt}
-            objectFit="cover"
-            layout="fill"
-            src={item.path}
+            style={{ background: i.color }}
+            objectFit="contain"
+            alt={i.alt}
+            fill
+            src={i.path}
           />
-          <p className="cursor-pointer z-10">{item.id}</p>
+          <div className="bg-[--background] w-full h-fit absolute bottom-0 flex flex-col">
+            <p className="relative text-lg">{i.id}</p>
+            <p className="relative text-sm">{i.color}</p>
+          </div>
         </motion.div>
       ))}
     </>

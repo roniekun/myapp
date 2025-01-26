@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./_styles/font.css";
 import StateProvider from "@/app/_provider/StateProvider";
-import Header from "@/app/_components/layout/Header";
 import { user } from "@/app/_lib/constants";
 
 export const metadata: Metadata = {
@@ -23,7 +22,6 @@ export default function RootLayout({
             style={{ fontFamily: "FC" }}
             className="flex flex-grow flex-col justify-center items-center text-sm"
           >
-            <Header />
             {children}
             {/* <Container classNames="justify-center items-center bg-zinc-200 w-full relative">
               <Footer />

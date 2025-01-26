@@ -6,6 +6,8 @@ import { useRef } from "react";
 import { useAppSelector } from "@/redux/hooks/hooks";
 import { twMerge } from "tailwind-merge";
 import { DataProps } from "./definitons/types";
+import BarLoader from "react-spinners/ClipLoader";
+import { Suspense } from "react";
 
 interface Props {
   data?: DataProps[];
@@ -23,8 +25,6 @@ const ScrollYGallery: React.FC<Props> = ({ className }) => {
     if (targetRef.current) {
       // Prevent default vertical scrolling
       if (deviceType !== "smartphone") {
-        event.preventDefault();
-
         // Scroll horizontally instead
         targetRef.current.scrollLeft += event.deltaY;
       }
@@ -33,7 +33,7 @@ const ScrollYGallery: React.FC<Props> = ({ className }) => {
 
   const containerStyle = `${
     deviceType === "smartphone"
-      ? " overflow-x-hidden scrollbar-hide w-screen"
+      ? " overflow-x-hidden  w-screen"
       : "relative flex-nowrap whitespace-nowrap overflow-x-scroll"
   }`;
 
@@ -41,9 +41,9 @@ const ScrollYGallery: React.FC<Props> = ({ className }) => {
     <div
       id="container"
       className={`${
-        deviceType === "smartphone"
+        deviceType === "smartphone" 
           ? "h-fit relative"
-          : "h-screen relative w-full overflow-hidden pt-[--header-height]"
+          : "h-screen relative w-full overflow-hidden"
       } `}
     >
       {/* Outer container with horizontal scrolling */}
@@ -53,7 +53,7 @@ const ScrollYGallery: React.FC<Props> = ({ className }) => {
         ref={targetRef}
         className={twMerge(
           containerStyle,
-          " h-screen flex flex-col md:flex-row justify-start items-start md:gap-5"
+          " h-screen flex flex-col md:flex-row justify-start items-start md:gap-5 scrollbar-hide "
         )}
       >
         {data?.map((i, idx) => (
@@ -61,10 +61,20 @@ const ScrollYGallery: React.FC<Props> = ({ className }) => {
             id="image-container"
             key={idx}
             style={{ backgroundColor: i.color }}
-            className="flex justify-center items-center relative md:w-[500px] w-full h-[90vh] flex-shrink-0 m-0 flex-col"
+            className="flex justify-center items-center relative lg:w-[500px] w-full h-full flex-shrink-0 m-0 flex-col md:w-[92vw]"
           >
-            <GrImage size={160} />
-            <p className="text-base">No image</p>
+            <Suspense
+              fallback={
+                <BarLoader
+                  size={150}
+                  aria-label="Loading Spinner"
+                  data-testid="loader"
+                />
+              }
+            >
+              <GrImage size={160} />
+              <p className="text-base">No image</p>
+            </Suspense>
           </div>
         ))}
       </div>

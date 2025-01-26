@@ -8,8 +8,6 @@ const ContactForm = () => {
   const [error, setError] = useState(null);
   const commonStyle = "border-b p-2 focus:outline-none text-sm bg-transparent" ;
   const handleFormSubmit = (formData: FormData) => {
-    const { errors } = formHandlerAction(formData);
-    setError(errors);
   };
 
   return (

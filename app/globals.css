@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --header-height: 4rem;
+  --header-height: 6rem;
   --footer-height: 10rem;
 }
 body::-webkit-scrollbar {

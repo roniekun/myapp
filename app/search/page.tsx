@@ -3,7 +3,7 @@ import Container from "@/app/_components/layout/Container";
 const Search = () => {
   return (
     <div className="flex min-h-screen w-full relative">
-      <Container classNames="p-4 relative">
+      <Container className="p-4 relative">
         <SearchComponent />
       </Container>
     </div>
