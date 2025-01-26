@@ -18,7 +18,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 
 const SearchSuggestionModal: React.FC = () => {
   const router = useRouter();
-  const { searchItems, selectedIndex, isInfocus, filteredSearchItems } =
+  const { searchItems, selectedIndex, filteredSearchItems } =
     useAppSelector((state) => state.search);
   const [deletedItem, setDeletedItem] = useState<SearchHistoryProps | null>(
     null
