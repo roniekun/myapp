@@ -1,13 +1,9 @@
 "use client";
-import { useFormState } from "react-dom";
-import { formHandlerAction } from "../../../_actions/formHandlerAction";
-import { useState } from "react";
 
 const ContactForm = () => {
-  // const [formAction] = useFormState(formHandleAction, initialState);
-  const [error, setError] = useState(null);
-  const commonStyle = "border-b p-2 focus:outline-none text-sm bg-transparent" ;
-  const handleFormSubmit = (formData: FormData) => {
+  const commonStyle = "border-b p-2 focus:outline-none text-sm bg-transparent";
+  const handleFormSubmit = () => {
+    console.log("submit");
   };
 
   return (

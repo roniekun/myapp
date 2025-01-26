@@ -61,7 +61,7 @@ const ScrollYGallery: React.FC<Props> = () => {
             id="image-container"
             key={idx}
             style={{ backgroundColor: i.color }}
-            className="flex justify-center items-center relative lg:w-[500px] w-full h-full flex-shrink-0 m-0 flex-col md:w-[92vw]"
+            className="flex justify-center items-center relative lg:w-[600px] w-full aspect-[4/5] flex-shrink-0 m-0 flex-col md:w-[92vw]"
           >
             <Suspense
               fallback={
