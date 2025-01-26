@@ -12,7 +12,6 @@ const SearchComponent: React.FC = () => {
   const { isInfocus, searchSuggestions } = useAppSelector(
     (state) => state.search
   );
-  const theme = useAppSelector((state) => state.theme.theme);
 
   const dispatch = useAppDispatch();
   const searchRef = useRef<HTMLDivElement>(null);

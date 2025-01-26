@@ -7,8 +7,6 @@ import { useAppSelector, useAppDispatch } from "@/redux/hooks/hooks";
 import { toggleMenu, setToggleMenu } from "@/redux/slices/MenuSlice";
 import { motion } from "framer-motion";
 import Container from "./Container";
-import SearchComponent from "@/app/_components/features/search/SearchComponent";
-import AdminLogin from "../features/auth/AdminLogin";
 import Navbar from "./Navbar";
 import { twMerge } from "tailwind-merge";
 import { usePathname } from "next/navigation";
@@ -22,9 +20,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   const isOpen = useAppSelector((state) => state.menu.isMenuOpen);
   // const { scrollPosition } = useAppSelector((state) => state.scroll);
   const dispatch = useAppDispatch();
-  const [animate, setAnimate] = useState<boolean>(false);
-  const pathname = usePathname();
-
+  
   useEffect(() => {
     dispatch(setToggleMenu(false));
   }, [deviceType]);

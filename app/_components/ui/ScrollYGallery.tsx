@@ -17,7 +17,7 @@ interface Props {
     slider?: string;
   };
 }
-const ScrollYGallery: React.FC<Props> = ({ className }) => {
+const ScrollYGallery: React.FC<Props> = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const deviceType = useAppSelector((state) => state.device.deviceType);
 

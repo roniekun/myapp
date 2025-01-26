@@ -3,8 +3,8 @@ import OpacityTransition from "@/app/_components/transition/OpacityTransition";
 import ScrollYGallery from "@/app/_components/ui/ScrollYGallery";
 import Header from "@/app/_components/layout/Header";
 
-const Features = async ({ params }: { params: { id: number } }) => {
-  const { id } = await params;
+const Features = async () => {
+  // const { id } = await params;
   return (
     <OpacityTransition>
       <Header className="fixed bg-white md:text-white text-zinc-900 md:bg-transparent" />

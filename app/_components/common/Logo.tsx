@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Logo = () => {
   const route = useRouter();
@@ -10,9 +11,9 @@ const Logo = () => {
   };
   return (
     <div>
-      <a className="font-black  text-lg" onClick={handleClick} href="/">
+      <Link className="font-black  text-lg" onClick={handleClick} href="/">
         MyApp
-      </a>
+      </Link>
     </div>
   );
 };

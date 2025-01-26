@@ -1,5 +1,4 @@
 "use client;";
-import React from "react";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { setScrollPosition } from "@/redux/slices/ScrollSlice";

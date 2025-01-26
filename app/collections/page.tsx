@@ -4,8 +4,8 @@ import CategoryItems from "@/app/_components/lib/CategoryItems";
 // import { categories } from "@/components/lib/CategoryItems";
 
 export default function Page() {
-  const searchParams = useSearchParams();
-  let category = searchParams.get("category");
+  // const searchParams = useSearchParams();
+  // const category = searchParams.get("category");
 
   return (
     <div className="min-h-screen flex flex-col items-center">
