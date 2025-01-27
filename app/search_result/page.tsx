@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 
 interface Props {
   searchParams: {
-    query?: Promise<string> | undefined;
+    query?: Promise<any> | undefined;
   };
 }
 
 const SearchResultPage = async ({ searchParams }: Props) => {
-  const query = (await searchParams.query) || "";
+  const query = (await searchParams.query?.toString()) || "";
   const formattedQuery = query.trim().toLowerCase().split(/\s+/); // Split by spaces into words
 
   // Filtering data to display as a result
