@@ -14,7 +14,7 @@ interface Props {
   };
 }
 
-const SearchResultPage = async ({ searchParams }: Props) => {
+const SearchResultPage = ({ searchParams }: Props) => {
   const query = searchParams.query?.toString() || "";
   const formattedQuery = query.trim().toLowerCase().split(/\s+/); // Split by spaces into words
 
