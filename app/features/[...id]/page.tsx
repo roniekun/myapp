@@ -14,7 +14,7 @@ const Features = async () => {
   // const { id } = await params;
   return (
     <OpacityTransition>
-      <Header className="fixed bg-white md:text-white text-zinc-900 md:bg-transparent" />
+      <Header className="fixed bg-white md:text-white  md:bg-transparent" />
 
       <div className="min-h-screen h-auto flex justify-center items-center flex-col">
         <ScrollYGallery />

@@ -32,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
     <header
       className={twMerge(
         className,
-        `left-0 w-full z-10 overflow-visible  top-0 p-4 justify-between flex items-center md:h-[--header-height]  transition-colors h-20 bg-opacity-65 `
+        `left-0 w-full z-10 overflow-visible  top-0 p-4 justify-between flex items-center md:h-[--header-height]  h-20 bg-opacity-5 `
       )}
     >
       <Logo />
@@ -44,10 +44,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         {/* md:absolute md:left-1/2 md:-translate-x-1/2 */}
         <div
           className={`md:hidden z-50 ${
-            isOpen ? " text-[--text-color-primary]" : "text-zinc-900"
+            isOpen && " text-[--text-color-primary]" 
           }`}
         >
-          <Hamburger onToggle={handleToggle} size={18} toggled={isOpen} />
+          <Hamburger duration={.3} onToggle={handleToggle} size={18} toggled={isOpen} />
         </div>
 
         <div className="md:flex justify-evenly  hidden  w-full relative items-center overflow-hidden">

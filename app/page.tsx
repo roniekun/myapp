@@ -6,9 +6,9 @@ import Header from "./_components/layout/Header";
 export default function Home() {
   return (
     <div className="w-full">
-      <Header className="fixed md:relative bg-white text-zinc-900 backdrop-blur-xl" />
+      <Header className="fixed md:relative bg-black text-[--text-color-primary]  backdrop-blur-xl md:h-auto" />
       <OpacityTransition>
-        <div className="min-h-screen relative w-full ">
+        <div className="min-h-screen relative w-full md:pt-0 pt-16">
             <Cards />
           <Container className="flex flex-col w-full gap-4 p-4 relative justify-center items-center">
             <FrequentlyAskedQuestions />
