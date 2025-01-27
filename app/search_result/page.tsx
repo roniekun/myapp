@@ -8,15 +8,15 @@ export const metadata: Metadata = {
   title: "Search",
 };
 
-interface Props {
-  searchParams: {
-    query?: string;
-  };
-}
+const SearchResultPage = ({
+  searchParams,
+}: {
+  searchParams: { query?: string };
+}) => {
+  const { query } = searchParams;
 
-const SearchResultPage = ({ searchParams }: Props) => {
-  const query = searchParams.query?.toString() || "";
-  const formattedQuery = query.trim().toLowerCase().split(/\s+/); // Split by spaces into words
+  const formattedQuery =
+    query?.toString().trim().toLowerCase().split(/\s+/) || []; // Split by spaces into words
 
   // Filtering data to display as a result
   const filteredData = contentData.filter((data) => {
@@ -24,7 +24,7 @@ const SearchResultPage = ({ searchParams }: Props) => {
     const content = data.content.trim().toLowerCase();
 
     // Check if any word in formattedQuery is included in the title or content
-    return formattedQuery.some(
+    return formattedQuery?.some(
       (word) => title.includes(word) || content.includes(word)
     );
   });
