@@ -121,7 +121,6 @@ const SearchSuggestionModal: React.FC = () => {
       (_, index) => index === selectedIndex
     );
     if (filteredSuggestion && "search" in filteredSuggestion) {
-      filteredSuggestion;
       dispatch(setQuery(filteredSuggestion.search));
     } else if (filteredSuggestion && "title" in filteredSuggestion) {
       dispatch(setQuery(filteredSuggestion.title));

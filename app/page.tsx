@@ -9,9 +9,7 @@ export default function Home() {
       <Header className="fixed md:relative bg-white text-zinc-900 backdrop-blur-xl" />
       <OpacityTransition>
         <div className="min-h-screen relative w-full ">
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-3 ">
             <Cards />
-          </div>
           <Container className="flex flex-col w-full gap-4 p-4 relative justify-center items-center">
             <FrequentlyAskedQuestions />
           </Container>
