@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
-import { useAppDispatch } from "@/redux/hooks/hooks";
-import { setDeviceType } from "@/redux/slices/DeviceSlice";
+import { useAppDispatch } from "@/app/redux/hooks/hooks";
+import { setDeviceType } from "@/app/redux/slices/DeviceSlice";
 
 const DeviceListener = () => {
   const dispatch = useAppDispatch();

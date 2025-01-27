@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppSelector } from "@/redux/hooks/hooks";
+import { useAppSelector } from "@/app/redux/hooks/hooks";
 import { useEffect } from "react";
 // import { setGlobalTheme } from "@/store/slices/ThemeSlice";
 

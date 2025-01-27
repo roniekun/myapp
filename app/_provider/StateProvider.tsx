@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Provider } from "react-redux";
-import store from "@/redux/store";
+import store from "@/app/redux/store";
 import DeviceListener from "@/app/_lib/listeners/DeviceListener";
 import ScrollListener from "@/app/_lib/listeners/ScrollListener";
 import ThemeListener from "@/app/_lib/listeners/ThemeListener";

@@ -4,8 +4,8 @@ import { twMerge } from "tailwind-merge";
 import SearchForm from "./ui/SearchForm";
 import { useEffect, useRef } from "react";
 import SearchSuggestionModal from "./ui/SearchSuggestions";
-import { useAppSelector, useAppDispatch } from "@/redux/hooks/hooks";
-import { setInfocus } from "@/redux/slices/SearchSlice";
+import { useAppSelector, useAppDispatch } from "@/app/redux/hooks/hooks";
+import { setInfocus } from "@/app/redux/slices/SearchSlice";
 import { AnimatePresence, motion } from "framer-motion";
 
 const SearchComponent: React.FC = () => {
@@ -30,9 +30,7 @@ const SearchComponent: React.FC = () => {
     };
   }, [dispatch]);
 
-  const deviceType = useAppSelector((state) => 
-    state.device.deviceType
-  );
+  const deviceType = useAppSelector((state) => state.device.deviceType);
 
   useEffect(() => {
     dispatch(setInfocus(false));

@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { useAppDispatch } from "@/redux/hooks/hooks";
-import { setGlobalTheme } from "@/redux/slices/ThemeSlice";
-import { useAppSelector } from "@/redux/hooks/hooks";
+import { useAppDispatch } from "@/app/redux/hooks/hooks";
+import { setGlobalTheme } from "@/app/redux/slices/ThemeSlice";
+import { useAppSelector } from "@/app/redux/hooks/hooks";
 import { MdNightsStay } from "react-icons/md";
 import { WiDaySunnyOvercast } from "react-icons/wi";
 

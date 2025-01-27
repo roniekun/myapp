@@ -1,7 +1,7 @@
 "use client;";
 import { useEffect } from "react";
-import { useAppDispatch } from "@/redux/hooks/hooks";
-import { setScrollPosition } from "@/redux/slices/ScrollSlice";
+import { useAppDispatch } from "@/app/redux/hooks/hooks";
+import { setScrollPosition } from "@/app/redux/slices/ScrollSlice";
 
 const ScrollListener = () => {
   const dispatch = useAppDispatch();

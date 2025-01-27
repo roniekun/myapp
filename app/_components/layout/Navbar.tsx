@@ -2,10 +2,10 @@
 import React from "react";
 import MenuItems from "../lib/MenuItems";
 import Container from "./Container";
-import { useAppSelector, useAppDispatch } from "@/redux/hooks/hooks";
+import { useAppSelector, useAppDispatch } from "@/app/redux/hooks/hooks";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
-import { setToggleMenu } from "@/redux/slices/MenuSlice";
+import { setToggleMenu } from "@/app/redux/slices/MenuSlice";
 import ToggleThemeButton from "../common/buttons/ToggleThemeButton";
 import LinkItems from "../lib/LinkItems";
 

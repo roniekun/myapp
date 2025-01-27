@@ -2,8 +2,8 @@ import debounce from "lodash/debounce";
 import {
   setFilteredResults,
   setFilteredSearchItems,
-} from "@/redux/slices/SearchSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
+} from "@/app/redux/slices/SearchSlice";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { useCallback } from "react";
 import { contentData } from "@/app/constants/search-data";
 

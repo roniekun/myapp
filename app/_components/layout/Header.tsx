@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 import Logo from "../common/Logo";
 import MenuItems from "../lib/MenuItems";
 import { Rotate as Hamburger } from "hamburger-react";
-import { useAppSelector, useAppDispatch } from "@/redux/hooks/hooks";
-import { toggleMenu, setToggleMenu } from "@/redux/slices/MenuSlice";
+import { useAppSelector, useAppDispatch } from "@/app/redux/hooks/hooks";
+import { toggleMenu, setToggleMenu } from "@/app/redux/slices/MenuSlice";
 import { motion } from "framer-motion";
 import Container from "./Container";
 import Navbar from "./Navbar";
@@ -44,10 +44,15 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         {/* md:absolute md:left-1/2 md:-translate-x-1/2 */}
         <div
           className={`md:hidden z-50 ${
-            isOpen && " text-[--text-color-primary]" 
+            isOpen && " text-[--text-color-primary]"
           }`}
         >
-          <Hamburger duration={.3} onToggle={handleToggle} size={18} toggled={isOpen} />
+          <Hamburger
+            duration={0.3}
+            onToggle={handleToggle}
+            size={18}
+            toggled={isOpen}
+          />
         </div>
 
         <div className="md:flex justify-evenly  hidden  w-full relative items-center overflow-hidden">

@@ -1,5 +1,5 @@
 import { MdOutlineSearch } from "react-icons/md";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import {
   setOpenSearch,
   setInfocus,
@@ -7,10 +7,10 @@ import {
   addSearchItem,
   setSelectedIndex,
   setSearchSuggestions,
-} from "@/redux/slices/SearchSlice";
+} from "@/app/redux/slices/SearchSlice";
 import { useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { SearchHistoryProps } from "@/redux/definitions/search-types";
+import { SearchHistoryProps } from "@/app/redux/definitions/search-types";
 import { useDebouncedHandleInputChange } from "../hooks/debounce";
 
 const SearchForm = () => {
@@ -107,7 +107,6 @@ const SearchForm = () => {
       setSearchSuggestions([...filteredSearchItems, ...filteredResults])
     );
   }, [filteredSearchItems, filteredResults]); //merging suggestions
-
 
   //updates for suggestions when user focus to the input
   useEffect(() => {

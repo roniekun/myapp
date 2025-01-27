@@ -11,15 +11,16 @@ import {
   setQuery,
   setSearchItems,
   setSearchSuggestions,
-} from "@/redux/slices/SearchSlice";
+} from "@/app/redux/slices/SearchSlice";
 
-import { SearchHistoryProps } from "@/redux/definitions/search-types";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
+import { SearchHistoryProps } from "@/app/redux/definitions/search-types";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 
 const SearchSuggestionModal: React.FC = () => {
   const router = useRouter();
-  const { searchItems, selectedIndex, filteredSearchItems } =
-    useAppSelector((state) => state.search);
+  const { searchItems, selectedIndex, filteredSearchItems } = useAppSelector(
+    (state) => state.search
+  );
   const [deletedItem, setDeletedItem] = useState<SearchHistoryProps | null>(
     null
   );
@@ -34,7 +35,6 @@ const SearchSuggestionModal: React.FC = () => {
       suggestionRefs.current[idx] = el;
     }
   };
-
 
   const handleClickHistory = (idx: number) => {
     const textContent = suggestionRefs.current[idx]?.textContent ?? "";

@@ -3,7 +3,7 @@
 import data from "./definitons/data";
 import { GrImage } from "react-icons/gr";
 import { useRef } from "react";
-import { useAppSelector } from "@/redux/hooks/hooks";
+import { useAppSelector } from "@/app/redux/hooks/hooks";
 import { DataProps } from "./definitons/types";
 import BarLoader from "react-spinners/ClipLoader";
 import { Suspense } from "react";
