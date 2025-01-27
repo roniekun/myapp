@@ -22,23 +22,31 @@ const Cards = () => {
         <Mansonry>
           {data.map((i) => (
             <motion.div
+              id="cards"
               key={i.id}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="cursor-pointer relative  w-auto h-auto  overflow-hidden m-auto"
+              className="cursor-pointer flex relative h-fit overflow-hidden m-auto items-center  justify-center "
               onClick={() => handleClick(i.id)}
             >
-              <Image
-                style={{ background: i.color, objectFit: "contain" }}
-                width={600}
-                height={900}
-                alt={i.alt}
-                src={i.path}
-              />
-              <Container className="bg-[--background] w-full h-fit absolute bottom-0 flex flex-col p-1">
-                <p className="relative text-lg">{i.id}</p>
-                <p className="relative text-sm">{i.color}</p>
-              </Container>
+              <div id="card" className="flex flex-col relative">
+                <Image
+                  style={{ background: i.color, objectFit: "cover" }}
+                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  width={500} // Portrait width
+                  height={550} // Portrait height
+                  alt={i.alt}
+                  src={i.path}
+                />
+                <Container className="bg-[--background] w-full h-fit flex flex-col p-1">
+                  <p className="relative text-lg font-semibold">{i.id}</p>
+                  <p className="relative text-sm">
+                    {" "}
+                    <small>Color id:</small>
+                    {i.color}
+                  </p>
+                </Container>
+              </div>
             </motion.div>
           ))}
         </Mansonry>

@@ -1,12 +1,13 @@
 "use client";
 // import Image from "next/image";
 import data from "./definitons/data";
-import { GrImage } from "react-icons/gr";
+// import { GrImage } from "react-icons/gr";
 import { useRef } from "react";
 import { useAppSelector } from "@/app/redux/hooks/hooks";
 import { DataProps } from "./definitons/types";
 import BarLoader from "react-spinners/ClipLoader";
 import { Suspense } from "react";
+import Image from "next/image";
 
 interface Props {
   data?: DataProps[];
@@ -42,14 +43,14 @@ const ScrollYGallery: React.FC<Props> = () => {
         id="image-slider"
         onWheel={handleScroll}
         ref={targetRef}
-        className={`h-screen flex flex-col md:flex-row justify-start items-center item-center md:items-start md:gap-5 scrollbar-hide overflow-x-hidden  w-screen sm:flex-nowrap sm:whitespace-nowrap sm:overflow-x-scroll`}
+        className={`h-screen flex flex-col md:flex-row justify-start items-center item-center md:items-start gap-1 scrollbar-hide overflow-x-hidden  w-screen sm:flex-nowrap sm:whitespace-nowrap sm:overflow-x-scroll`}
       >
         {data?.map((i, idx) => (
           <div
             id="image-container"
             key={idx}
             style={{ backgroundColor: i.color }}
-            className="flex justify-center items-center relative lg:w-[600px] w-full lg:aspect-[4/5] aspect-[5/7] flex-shrink-0 m-0 flex-col sm:w-[92vw] "
+            className="flex  relative flex-col w-full h-screen object-cover aspect-[2/3] items-center"
           >
             <Suspense
               fallback={
@@ -60,7 +61,13 @@ const ScrollYGallery: React.FC<Props> = () => {
                 />
               }
             >
-              <GrImage size={160} />
+              <Image
+                style={{ background: i.color, objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                fill
+                alt={i.alt}
+                src={i.path}
+              />
               <p className="text-base">No image</p>
             </Suspense>
           </div>

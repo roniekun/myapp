@@ -38,7 +38,7 @@ const Navbar = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-opacity-60 items-center justify-center w-full rounded-sm gap-4 relative flex flex-col my-[--header-height]"
+              className="bg-opacity-60 items-center justify-center w-full rounded-sm gap-4 relative flex flex-col mt-[5vh]"
             >
               <Container className="flex-col w-full justify-center items-center py-10 gap-3">
                 <MenuItems
@@ -46,7 +46,7 @@ const Navbar = () => {
                   onClick={handleClick}
                 />
               </Container>
-              <Container className="gap-1 flex w-fit items-center  justify-center">
+              <Container className="gap-3 flex w-fit items-center  justify-center">
                 <LinkItems
                   className="w-fit bg-black flex justify-center"
                   displayIcon
