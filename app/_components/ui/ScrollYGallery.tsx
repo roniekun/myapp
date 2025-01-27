@@ -32,48 +32,48 @@ const ScrollYGallery: React.FC<Props> = () => {
   };
 
   return (
-    <div
-      id="container"
-      className={`h-fit
-         lg:h-screen lg:w-full lg:overflow-hidden flex items-center justify-center
-  `}
-    >
-      {/* Outer container with horizontal scrolling */}
       <div
-        id="image-slider"
-        onWheel={handleScroll}
-        ref={targetRef}
-        className={`h-screen flex flex-col md:flex-row justify-start items-center item-center md:items-start gap-1 scrollbar-hide overflow-x-hidden  w-screen sm:flex-nowrap sm:whitespace-nowrap sm:overflow-x-scroll`}
+        id="container"
+        className={`h-fit
+        lg:h-screen lg:w-full lg:overflow-hidden flex items-center justify-center
+        `}
       >
-        {data?.map((i, idx) => (
-          <div
-            id="image-container"
-            key={idx}
-            style={{ backgroundColor: i.color }}
-            className="flex  relative flex-col w-full h-screen object-cover aspect-[2/3] items-center"
-          >
-            <Suspense
-              fallback={
-                <BarLoader
-                  size={150}
-                  aria-label="Loading Spinner"
-                  data-testid="loader"
-                />
-              }
+        {/* Outer container with horizontal scrolling */}
+        <div
+          id="image-slider"
+          onWheel={handleScroll}
+          ref={targetRef}
+          className={`h-screen flex flex-col md:flex-row justify-start items-center item-center md:items-start gap-1 scrollbar-hide overflow-x-hidden  w-screen sm:flex-nowrap sm:whitespace-nowrap sm:overflow-x-scroll`}
+        >
+          {data?.map((i, idx) => (
+            <div
+              id="image-container"
+              key={idx}
+              style={{ backgroundColor: i.color }}
+              className="flex  relative flex-col w-full h-screen object-cover aspect-[2/3] items-center"
             >
-              <Image
-                style={{ background: i.color, objectFit: "cover" }}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                fill
-                alt={i.alt}
-                src={i.path}
-              />
-              <p className="text-base">No image</p>
-            </Suspense>
-          </div>
-        ))}
+              <Suspense
+                fallback={
+                  <BarLoader
+                    size={150}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                  />
+                }
+              >
+                <Image
+                  style={{ background: i.color, objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  fill
+                  alt={i.alt}
+                  src={i.path}
+                />
+                <p className="text-base">No image</p>
+              </Suspense>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
   );
 };
 

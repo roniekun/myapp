@@ -4,14 +4,15 @@ import Image from "next/image";
 import data from "./definitons/data";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import Container from "../layout/Container";
 import Mansonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 const Cards = () => {
   const router = useRouter();
 
   const handleClick = (id: number) => {
-    router.push(`features/${id}`);
+    // router.push(`features/${id}`);
+    window.location.href =`/features/${id}`;
+
   };
   return (
     <>
@@ -26,26 +27,26 @@ const Cards = () => {
               key={i.id}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="cursor-pointer flex relative h-fit overflow-hidden m-auto items-center  justify-center "
+              className="cursor-pointer flex relative h-fit m-auto items-center object-contain  justify-center overflow-hidden"
               onClick={() => handleClick(i.id)}
             >
-              <div id="card" className="flex flex-col relative">
+              <div id="card" className="flex flex-col relative object-contain overflow-hidden">
                 <Image
-                  style={{ background: i.color, objectFit: "cover" }}
-                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  width={500} // Portrait width
-                  height={550} // Portrait height
+                  style={{ background: i.color, }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  width={500} 
+                  height={550} 
                   alt={i.alt}
                   src={i.path}
                 />
-                <Container className="bg-[--background] w-full h-fit flex flex-col p-1">
-                  <p className="relative text-lg font-semibold">{i.id}</p>
-                  <p className="relative text-sm">
+                <div className="bg-[--background] w-auto h-fit flex flex-col p-1 flex-1 ">
+                  <p className="relative text-lg w-fit font-semibold " >{i.id}</p>
+                  <p className="relative text-sm w-fit">
                     {" "}
                     <small>Color id:</small>
                     {i.color}
                   </p>
-                </Container>
+                </div>
               </div>
             </motion.div>
           ))}

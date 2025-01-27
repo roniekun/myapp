@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <OpacityTransition>
-      <Header />
-      <div className="flex relative justify-center items-center p-4 w-full flex-col min-h-screen">
+      <div className="flex relative  w-full flex-col min-h-screen">
+        <Header />
         <Container className="relative p-[5vw]">
           <ContactForm />
         </Container>
