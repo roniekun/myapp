@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: "Search",
 };
 
-const SearchResultPage = ({
+const SearchResultPage = async ({
   searchParams,
 }: {
-  searchParams: { query?: string };
+  searchParams: Promise<{ query?: string }>;
 }) => {
-  const { query } = searchParams;
+  const { query } = await searchParams;
 
   const formattedQuery =
     query?.toString().trim().toLowerCase().split(/\s+/) || []; // Split by spaces into words
