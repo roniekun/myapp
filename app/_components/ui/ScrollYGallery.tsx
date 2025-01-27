@@ -4,7 +4,6 @@ import data from "./definitons/data";
 import { GrImage } from "react-icons/gr";
 import { useRef } from "react";
 import { useAppSelector } from "@/redux/hooks/hooks";
-import { twMerge } from "tailwind-merge";
 import { DataProps } from "./definitons/types";
 import BarLoader from "react-spinners/ClipLoader";
 import { Suspense } from "react";
@@ -31,37 +30,26 @@ const ScrollYGallery: React.FC<Props> = () => {
     }
   };
 
-  const containerStyle = `${
-    deviceType === "smartphone"
-      ? " overflow-x-hidden  w-screen"
-      : "relative flex-nowrap whitespace-nowrap overflow-x-scroll"
-  }`;
-
   return (
     <div
       id="container"
-      className={`${
-        deviceType === "smartphone" 
-          ? "h-fit relative"
-          : "h-screen relative w-full overflow-hidden"
-      } `}
+      className={`h-fit
+         lg:h-screen lg:w-full lg:overflow-hidden flex items-center justify-center
+  `}
     >
       {/* Outer container with horizontal scrolling */}
       <div
         id="image-slider"
         onWheel={handleScroll}
         ref={targetRef}
-        className={twMerge(
-          containerStyle,
-          " h-screen flex flex-col md:flex-row justify-start items-start md:gap-5 scrollbar-hide "
-        )}
+        className={`h-screen flex flex-col md:flex-row justify-start items-center item-center md:items-start md:gap-5 scrollbar-hide overflow-x-hidden  w-screen sm:flex-nowrap sm:whitespace-nowrap sm:overflow-x-scroll`}
       >
         {data?.map((i, idx) => (
           <div
             id="image-container"
             key={idx}
             style={{ backgroundColor: i.color }}
-            className="flex justify-center items-center relative lg:w-[600px] w-full aspect-[4/5] flex-shrink-0 m-0 flex-col md:w-[92vw]"
+            className="flex justify-center items-center relative lg:w-[600px] w-full lg:aspect-[4/5] aspect-[5/7] flex-shrink-0 m-0 flex-col sm:w-[92vw] "
           >
             <Suspense
               fallback={

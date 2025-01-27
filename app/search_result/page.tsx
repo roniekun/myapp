@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 
 interface Props {
   searchParams: {
-    query?: Promise<any> | undefined;
+    query?: string;
   };
 }
 
 const SearchResultPage = async ({ searchParams }: Props) => {
-  const query = (await searchParams.query?.toString()) || "";
+  const query = searchParams.query?.toString() || "";
   const formattedQuery = query.trim().toLowerCase().split(/\s+/); // Split by spaces into words
 
   // Filtering data to display as a result
@@ -33,7 +33,7 @@ const SearchResultPage = async ({ searchParams }: Props) => {
     <div className="flex flex-col min-h-screen w-full relative pt-[--header-height]">
       <Suspense fallback={<h2>Loading results...</h2>}>
         {filteredData.length > 0 ? (
-          <Container className="flex flex-col gap-1 w-full ">
+          <Container className="flex flex-col gap-1 w-full">
             {filteredData.map((data, idx) => (
               <div key={idx}>
                 <Link href={`/search_result/${data.id}`}>

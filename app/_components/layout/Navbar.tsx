@@ -40,7 +40,7 @@ const Navbar = () => {
               exit={{ opacity: 0, scale: 0.95 }}
               className="bg-opacity-60 items-center justify-center w-full rounded-sm gap-4 relative flex flex-col my-[--header-height]"
             >
-              <Container className="flex-col w-full justify-center items-center py-10">
+              <Container className="flex-col w-full justify-center items-center py-10 gap-3">
                 <MenuItems
                   className="font-medium text-center text-xl w-fit hover:text-opacity-80"
                   onClick={handleClick}

@@ -7,7 +7,7 @@ interface ContainerProps {
 }
 
 const Container = ({ children, className }: ContainerProps) => {
-  return <div className={twMerge(className,"flex flex-wrap px-[5vw] w-full gap-4")}>{children}</div>;
+  return <div className={twMerge(className,"flex flex-wrap  w-full")}>{children}</div>;
 };
 
 export default Container;

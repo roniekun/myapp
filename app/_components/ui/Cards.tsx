@@ -4,6 +4,7 @@ import Image from "next/image";
 import data from "./definitons/data";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import Container from "../layout/Container";
 import Mansonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 const Cards = () => {
@@ -34,10 +35,10 @@ const Cards = () => {
                 alt={i.alt}
                 src={i.path}
               />
-              <div className="bg-[--background] w-full h-fit absolute bottom-0 flex flex-col">
+              <Container className="bg-[--background] w-full h-fit absolute bottom-0 flex flex-col p-1">
                 <p className="relative text-lg">{i.id}</p>
                 <p className="relative text-sm">{i.color}</p>
-              </div>
+              </Container>
             </motion.div>
           ))}
         </Mansonry>

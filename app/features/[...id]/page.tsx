@@ -16,7 +16,7 @@ const Features = async () => {
     <OpacityTransition>
       <Header className="fixed bg-white md:text-white  md:bg-transparent" />
 
-      <div className="min-h-screen h-auto flex justify-center items-center flex-col">
+      <div className="min-h-screen h-auto flex justify-center items-center flex-col w-full relative">
         <ScrollYGallery />
       </div>
     </OpacityTransition>
