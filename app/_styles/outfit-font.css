@@ -1,0 +1,120 @@
+/**
+* @license
+*
+* Font Family: Outfit
+* Designed by: On Brand Investments Pty Ltd, Rodrigo Fuenzalida
+* URL: https://www.fontshare.com/fonts/outfit
+* © 2025 Indian Type Foundry
+*
+* Outfit Thin 
+* Outfit ExtraLight 
+* Outfit Light 
+* Outfit Regular 
+* Outfit Medium 
+* Outfit SemiBold 
+* Outfit Bold 
+* Outfit ExtraBold 
+* Outfit Black 
+* Outfit Variable (Variable font)
+
+*
+*/
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/outfit/Outfit-Thin.woff2') format('woff2'),
+       url('/fonts/outfit/Outfit-Thin.woff') format('woff'),
+       url('/fonts/outfit/Outfit-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/outfit/Outfit-ExtraLight.woff2') format('woff2'),
+       url('/fonts/outfit/Outfit-ExtraLight.woff') format('woff'),
+       url('/fonts/outfit/Outfit-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/outfit/Outfit-Light.woff2') format('woff2'),
+       url('/fonts/outfit/Outfit-Light.woff') format('woff'),
+       url('/fonts/outfit/Outfit-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/outfit/Outfit-Regular.woff2') format('woff2'),
+       url('/fonts/outfit/Outfit-Regular.woff') format('woff'),
+       url('/fonts/outfit/Outfit-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/outfit/Outfit-Medium.woff2') format('woff2'),
+       url('/fonts/outfit/Outfit-Medium.woff') format('woff'),
+       url('/fonts/outfit/Outfit-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/outfit/Outfit-SemiBold.woff2') format('woff2'),
+       url('/fonts/outfit/Outfit-SemiBold.woff') format('woff'),
+       url('/fonts/outfit/Outfit-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/outfit/Outfit-Bold.woff2') format('woff2'),
+       url('/fonts/outfit/Outfit-Bold.woff') format('woff'),
+       url('/fonts/outfit/Outfit-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/outfit/Outfit-ExtraBold.woff2') format('woff2'),
+       url('/fonts/outfit/Outfit-ExtraBold.woff') format('woff'),
+       url('/fonts/outfit/Outfit-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/outfit/Outfit-Black.woff2') format('woff2'),
+       url('/fonts/outfit/Outfit-Black.woff') format('woff'),
+       url('/fonts/outfit/Outfit-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+/**
+* This is a variable font
+* You can control variable axes as shown below:
+* font-variation-settings: wght 100.0;
+*
+* available axes:
+'wght' (range from 100.0 to 900.0
+*/
+@font-face {
+  font-family: 'Outfit-Variable';
+  src: url('/fonts/outfit/Outfit-Variable.woff2') format('woff2'),
+       url('/fonts/outfit/Outfit-Variable.woff') format('woff'),
+       url('/fonts/outfit/Outfit-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+

@@ -8,10 +8,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 type Props = {
   className?: string;
   speed?: number;
-  title?: string;
+  text: string;
 };
 
-const TextSlider: React.FC<Props> = ({ title, speed = 0.1, className }) => {
+const TextSlider: React.FC<Props> = ({ text, speed = 0.1, className }) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const firsttextRef = useRef<HTMLDivElement | null>(null);
   const secondtextRef = useRef<HTMLDivElement | null>(null);
@@ -59,16 +59,16 @@ const TextSlider: React.FC<Props> = ({ title, speed = 0.1, className }) => {
     <div className={twMerge("overflow-hidden", className)}>
       <div
         ref={sliderRef}
-        className="relative flex whitespace-nowrap w-fit overflow-hidden"
+        className="relative flex flex-nowrap whitespace-nowrap w-fit overflow-hidden"
       >
         <div ref={firsttextRef} className="pr-[1vw] w-fit relative">
-          {title}
+          {text}
         </div>
         <div
           ref={secondtextRef}
           className="pr-[1vw] w-fit absolute left-[100%] "
         >
-          {title}
+          {text}
         </div>
       </div>
     </div>

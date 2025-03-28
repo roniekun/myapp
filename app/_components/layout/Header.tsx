@@ -1,14 +1,14 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../common/Logo";
-import MenuItems from "../lib/MenuItems";
-import { Rotate as Hamburger } from "hamburger-react";
 import { useAppSelector, useAppDispatch } from "@/app/redux/hooks/hooks";
-import { toggleMenu, setToggleMenu } from "@/app/redux/slices/MenuSlice";
-import { motion } from "framer-motion";
-import Container from "./Container";
-import Navbar from "./Navbar";
+import { setToggleMenu } from "@/app/redux/slices/MenuSlice";
+import SearchButton from "../common/buttons/SearchButton";
 import { twMerge } from "tailwind-merge";
+import { motion, cubicBezier } from "framer-motion";
+import MenuIcon from "../common/buttons/MenuIcon";
+import { MdOutlineSearch } from "react-icons/md";
+import Link from "next/link";
 
 interface HeaderProps {
   className?: string;
@@ -16,57 +16,46 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const deviceType = useAppSelector((state) => state.device.deviceType);
-  const isOpen = useAppSelector((state) => state.menu.isMenuOpen);
-  // const { scrollPosition } = useAppSelector((state) => state.scroll);
+  const scrollPosition = useAppSelector((state) => state.scroll.scrollPosition);
   const dispatch = useAppDispatch();
+  const [isScroll, setIsScroll] = useState(false);
 
   useEffect(() => {
     dispatch(setToggleMenu(false));
   }, [deviceType]);
 
-  const handleToggle = () => {
-    dispatch(toggleMenu());
-  };
+  useEffect(() => {
+    if (scrollPosition > 0) {
+      setIsScroll(true);
+    } else {
+      setIsScroll(false);
+    }
+  }, [scrollPosition]);
 
   return (
-    <header
+    <motion.header
+      initial={{ y: "-100%" }}
+      animate={{ y: 0 }}
+      transition={{ ease: cubicBezier(0, 0.55, 0.45, 1), duration: 1 }} //https://easings.net/#easeOutCubic
       className={twMerge(
         className,
-        `left-0 w-full z-10 overflow-visible  top-0 p-4 justify-between flex items-center md:h-[--header-height]  h-20 bg-opacity-5 `
+        `left-0 w-full z-10 overflow-visible transition-colors duration-300  top-0 p-4 justify-between flex items-center h-20 lg:px-8  transform -translate-y-full`
       )}
     >
       <Logo />
-      <motion.nav
-        // initial={{ opacity: 0 }}
-        // animate={{ opacity: 1 }}
-        className="flex gap-4 max-w-full relative  items-center  overflow-visible"
-      >
-        {/* md:absolute md:left-1/2 md:-translate-x-1/2 */}
-        <div
-          className={`md:hidden z-50 ${
-            isOpen && " text-[--text-color-primary]"
-          }`}
-        >
-          <Hamburger
-            duration={0.3}
-            onToggle={handleToggle}
-            size={18}
-            toggled={isOpen}
-          />
-        </div>
+      <div className="absolute md:relative md:right-0 right-16">
+        <SearchButton />
+      </div>
 
-        <div className="md:flex justify-evenly  hidden  w-full relative items-center overflow-hidden">
-          <Container className="flex gap-x-10 w-full flex-1">
-            <MenuItems className="text-lg font-medium" />
-          </Container>
-        </div>
-      </motion.nav>
-      {/* <div className="hidden md:flex relative justify-center items-center gap-4">
-        {pathname !== "/search" && <SearchComponent />}
-        <AdminLogin />
-      </div> */}
-      <Navbar />
-    </header>
+      <motion.div
+        key={deviceType}
+        className="lg:absolute relative lg:left-1/2 lg:-translate-x-1/2 transform flex gap-2 justify-center items-center"
+        animate={{ rotate: deviceType === "desktop" ? 360 : 0 }}
+        transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+      >
+        <MenuIcon />
+      </motion.div>
+    </motion.header>
   );
 };
 

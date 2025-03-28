@@ -1,8 +1,6 @@
-type userProps = {
-    name: string,
-    email:string,
-}
-export const user: userProps = {
-    name: "Ronie Benitez",
-    email: "roniebenitez01@gmail.com"
-}
+export const user = {
+  name: "Ronie Benitez",
+  website: "Ronstdio\u00AE",
+  email: "roniebenitez01@gmail.com",
+  contact: "+649453924586",
+};

@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Pangaia";
+  src: url("/fonts/pangaia/PPPangaia-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pangaia";
+  src: url("/fonts/pangaia/PPPangaia-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pangaia";
+  src: url("/fonts/pangaia/PPPangaia-Ultralight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pangaia";
+  src: url("/fonts/pangaia/PPPangaia-UltralightItalic.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}

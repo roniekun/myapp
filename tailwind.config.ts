@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontWeight: {
+        book: "450",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

@@ -2,6 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { user } from "@/app/_lib/constants";
 
 const Logo = () => {
   const route = useRouter();
@@ -11,8 +12,8 @@ const Logo = () => {
   };
   return (
     <div>
-      <Link className="font-black  text-lg" onClick={handleClick} href="/">
-        MyApp
+      <Link className="text-2xl font-semibold bg-blend-difference uppercase" onClick={handleClick} href="/">
+        {user.website}
       </Link>
     </div>
   );

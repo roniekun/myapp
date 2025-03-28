@@ -1,5 +1,5 @@
 import { DataProps } from "./types";
-const data:DataProps[] = [
+const data: DataProps[] = [
   {
     id: 1,
     alt: "img",
@@ -9,19 +9,19 @@ const data:DataProps[] = [
   {
     id: 2,
     alt: "img",
-    path: "https://drive.google.com/uc?id=1FRIMQ8JYalF2J5xmZVznSB_3-VDeD0V",
+    path: "https://drive.google.com/uc?id=1UAttgY49XxcNcIbQM6ZmlUgO8n0SOnjM",
     color: "#212529",
   },
   {
     id: 3,
     alt: "img",
-    path: "https://drive.google.com/uc?id=1FRIMQ8JYalF2J5xmZVznSB_3-VDeD0V",
+    path: "https://drive.google.com/uc?id=1UJdlWrYbBl7RQmGwpITIFqqqzXHQE0Dx",
     color: "#495057",
   },
   {
     id: 4,
     alt: "img",
-    path: "https://drive.google.com/uc?id=1FRIMQ8JYalF2J5xmZVznB_3-8VDeD0V",
+    path: "https://drive.google.com/uc?id=13HB2hbSuPXOm-jDTMcjBgr12GlX4IZmV",
     color: "#6c757d",
   },
   {

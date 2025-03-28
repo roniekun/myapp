@@ -40,7 +40,7 @@ const SearchComponent: React.FC = () => {
     <div
       ref={searchRef}
       className={twMerge(
-        `flex relative flex-col h-fit top-0 px-4 py-1 overflow-visible focus:outline outline-1 text-sm bg-white rounded-md bg-opacity-5 shadow-md`
+        `flex relative flex-col h-fit top-0 px-2 py-1 overflow-visible focus:outline outline-1 text-sm bg-black bg-opacity-10 rounded-md shadow-sm`
       )}
     >
       <SearchForm />

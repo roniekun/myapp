@@ -1,15 +1,22 @@
 "use client";
-import React from "react";
-import LinkItems from "../lib/LinkItems";
+import MenuItems from "../lib/MenuItems";
 
 const Footer = () => {
-  const listStyle = "flex gap-3 w-fit h-fit p-4 ";
+  const date = new Date();
   return (
-    <footer className="flex relative w-screen max-w-[1400px] h-[--footer-height] p-4 flex-wrap whitespace-nowrap text-zinc-700 justify-center items-center">
-      <div className={listStyle}>
-        <LinkItems displayIcon={true} />
-      </div>
-    </footer>
+      <footer className="flex relative w-screen max-w-[1400px] h- p-4 flex-wrap whitespace-nowrap justify-center items-center">
+        <div className="md:grid md:grid-cols-3 place-items-center w-full flex flex-col font-semibold gap-y-5 text-base md:text-lg py-10">
+          <div>
+            <p className="font-semibold">www.ronstdio.com</p>
+          </div>
+          <div className="gap-x-2 flex">
+            <MenuItems />
+          </div>
+          <div>
+            <p>All rights reserverd.{date.getFullYear()}</p>
+          </div>
+        </div>
+      </footer>
   );
 };
 

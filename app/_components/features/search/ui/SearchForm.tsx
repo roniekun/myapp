@@ -95,12 +95,6 @@ const SearchForm = () => {
     if (!items.length) return;
   };
 
-  // //clears the input field
-  // const handleClearInput = () => {
-  //   dispatch(setInfocus(false));
-  //   dispatch(setQuery(""));
-  // };
-
   //realtime updates for suggestions
   useEffect(() => {
     dispatch(
@@ -127,15 +121,6 @@ const SearchForm = () => {
     dispatch(setSelectedIndex(-1));
   };
 
-  // const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-  //   // Check if the blur event is leaving the entire component
-  //   e.stopPropagation();
-
-  //   setTimeout(() => {
-  //     dispatch(setInfocus(false));
-  //   }, 150);
-  // };
-
   return (
     <form
       action={handleSearch}
@@ -152,11 +137,11 @@ const SearchForm = () => {
         placeholder={placeholder}
         style={{ padding: 4 }}
         // onBlur={(e) => handleBlur(e)}
-        className={`relative rounded-md w-[20vw] bg-transparent  h-auto p-2 focus:outline-none `}
+        className={`relative rounded-md w-full bg-transparent  h-auto focus:outline-none text-base]`}
       />
       <div className="flex w-7 justify-center h-full items-center  rounded-r-full cursor-pointer">
         <div onClick={handleClickIcon}>
-          <MdOutlineSearch size={22} />
+          <MdOutlineSearch className="text-zinc-600" size={22} />
         </div>
       </div>
     </form>

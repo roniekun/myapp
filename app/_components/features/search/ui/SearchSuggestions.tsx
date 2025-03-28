@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import { useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 
 import {
   addSearchItem,
@@ -138,90 +139,95 @@ const SearchSuggestionModal: React.FC = () => {
   }, [filteredSearchItems]);
 
   return (
-    <div className="flex flex-col absolute z-50 top-full justify-center items-center mt-1 w-full py-3 px-2 left-0 rounded-md bg-zinc-200  backdrop-blur-sm shadow-md">
-      <ul className="relative flex flex-col w-full justify-center items-center rounded-b-md h-auto gap-y-1 ">
-        <>
-          {showOption && (
-            <div className="justify-between flex items-center text-xs w-full font-semibold relative px-2 text-zinc-600">
-              <span>Recent</span>
-              <button
-                onClick={handleClear}
-                className="p-2 relative justify-end flex ml-auto text-blue-500 hover:underline w-fit"
-              >
-                Delete history
-              </button>
-            </div>
-          )}
-        </>
-
-        {searchSuggestions.map((item, idx) => (
-          <li
-            key={idx}
-            ref={(el) => setRef(el, idx)}
-            onMouseEnter={() => handleMouseHover(idx)}
-            onMouseLeave={handleMouseLeave}
-            className={` flex w-full relative justify-between items-center gap-x-1 rounded-md overflow-hidden`}
-          >
-            {"search" in item && (
-              <>
-                <a
-                  onClick={() => handleClickHistory(idx)}
-                  className={`${
-                    (selectedIndex === idx || hoveredItem === idx) &&
-                    "bg-neutral-900 bg-opacity-10 text-zinc-600"
-                  } cursor-pointer px-2 flex text-left relative flex-1 text-zinc-800`}
+    <AnimatePresence>
+      <motion.div   
+      transition={{ duration: 0.3 }}
+              exit={{ y: -10 }} 
+              className="flex flex-col absolute z-50 top-full justify-center items-center mt-1 w-full py-3 px-2 left-0 rounded-md bg-zinc-200  backdrop-blur-sm shadow-md">
+        <ul className="relative flex flex-col w-full justify-center items-center rounded-b-md h-auto gap-y-1 ">
+          <>
+            {showOption && (
+              <div className="justify-between flex items-center text-xs w-full font-semibold relative px-2 text-zinc-600">
+                <span>Recent</span>
+                <button
+                  onClick={handleClear}
+                  className="p-2 relative justify-end flex ml-auto text-blue-500 hover:underline w-fit"
                 >
-                  {item.search}
-                </a>
-
-                <IoIosClose
-                  size={20}
-                  className="cursor-pointer relative mr-3 text-zinc-700"
-                  onClick={() => handleDelete(item.id)}
-                />
-              </>
+                  Delete history
+                </button>
+              </div>
             )}
-            {"title" in item && (
-              <>
-                <a
-                  onClick={() => handleClickSearch(idx)}
-                  onMouseDown={() => {
-                    handleMouseDown(idx);
-                  }}
-                  className={`${
-                    (selectedIndex === idx || hoveredItem === idx) &&
-                    "bg-neutral-900 bg-opacity-10 text-zinc-600"
-                  } cursor-pointer px-2 flex text-left relative flex-1text-zinc-800`}
-                >
-                  {item.title}
-                </a>
-                <span className="read-only" />
-              </>
-            )}
-          </li>
-        ))}
+          </>
 
-        {/* <>
+          {searchSuggestions.map((item, idx) => (
+            <li
+              key={idx}
+              ref={(el) => setRef(el, idx)}
+              onMouseEnter={() => handleMouseHover(idx)}
+              onMouseLeave={handleMouseLeave}
+              className={` flex w-full relative justify-between items-center gap-x-1 rounded-md overflow-hidden`}
+            >
+              {"search" in item && (
+                <>
+                  <a
+                    onClick={() => handleClickHistory(idx)}
+                    className={`${
+                      (selectedIndex === idx || hoveredItem === idx) &&
+                      "bg-neutral-900 bg-opacity-10 text-zinc-600"
+                    } cursor-pointer px-2 flex text-left relative flex-1 text-zinc-800`}
+                  >
+                    {item.search}
+                  </a>
+
+                  <IoIosClose
+                    size={20}
+                    className="cursor-pointer relative mr-3 text-zinc-700"
+                    onClick={() => handleDelete(item.id)}
+                  />
+                </>
+              )}
+              {"title" in item && (
+                <>
+                  <a
+                    onClick={() => handleClickSearch(idx)}
+                    onMouseDown={() => {
+                      handleMouseDown(idx);
+                    }}
+                    className={`${
+                      (selectedIndex === idx || hoveredItem === idx) &&
+                      "bg-neutral-900 bg-opacity-10 text-zinc-600"
+                    } cursor-pointer px-2 flex text-left relative flex-1text-zinc-800`}
+                  >
+                    {item.title}
+                  </a>
+                  <span className="read-only" />
+                </>
+              )}
+            </li>
+          ))}
+
+          {/* <>
           {filteredResults.length > 0 && (
             <div className="justify-between flex items-center text-xs w-full font-semibold relative px-2 text-zinc-600">
-              <span>Suggestions</span>
+            <span>Suggestions</span>
             </div>
-          )}
-        </> */}
+            )}
+            </> */}
 
-        {/* {searchSuggestions.map((item, idx) => (
+          {/* {searchSuggestions.map((item, idx) => (
           <li
-            key={idx}
-            ref={(el) => setRef(el, idx)}
-            onMouseEnter={() => handleMouseHover(idx)}
-            onMouseLeave={handleMouseLeave}
-            className={` flex w-full relative justify-between items-center gap-x-1 rounded-md overflow-hidden`}
+          key={idx}
+          ref={(el) => setRef(el, idx)}
+          onMouseEnter={() => handleMouseHover(idx)}
+          onMouseLeave={handleMouseLeave}
+          className={` flex w-full relative justify-between items-center gap-x-1 rounded-md overflow-hidden`}
           >
-            
+          
           </li>
-        ))} */}
-      </ul>
-    </div>
+          ))} */}
+        </ul>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

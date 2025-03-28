@@ -1,49 +1,49 @@
 /* styles/fonts.css */
 @font-face {
   font-family: "FC";
-  src: url("/fonts/FuturaCyrillicBold.ttf") format("truetype");
+  src: url("/fonts/futura/futura/FuturaCyrillicBold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "FC";
-  src: url("/fonts/FuturaCyrillicBook.ttf") format("wttf");
+  src: url("/fonts/futura/FuturaCyrillicBook.ttf") format("wttf");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "FC";
-  src: url("/fonts/FuturaCyrillicLight.ttf") format("truetype");
+  src: url("/fonts/futura/FuturaCyrillicLight.ttf") format("truetype");
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
   font-family: "FC";
-  src: url("/fonts/FuturaCyrillicMedium.ttf") format("truetype");
+  src: url("/fonts/futura/FuturaCyrillicMedium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "FC";
-  src: url("/fonts/FuturaCyrillicHeavy.ttf") format("truetype");
+  src: url("/fonts/futura/FuturaCyrillicHeavy.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
   font-family: "FC";
-  src: url("/fonts/FuturaCyrillicExtraBold.ttf") format("truetype");
+  src: url("/fonts/futura/FuturaCyrillicExtraBold.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: "FC";
-  src: url("/fonts/FuturaCyrillicExtraDemi.ttf") format("truetype");
+  src: url("/fonts/futura/FuturaCyrillicExtraDemi.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }

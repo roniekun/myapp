@@ -15,14 +15,14 @@ const ToggleThemeButton = () => {
     dispatch(setGlobalTheme(value));
   };
   return (
-    <div className="flex justify-center flex-col items-center gap-3 w-fit">
+    <div className="flex justify-center relative flex-col items-center gap-3 w-fit">
       {theme === "dark" && <MdNightsStay scale={26} />}
       {theme === "light" && <WiDaySunnyOvercast size={26} />}
-      <div className="flex">
+      <div className="flex relative">
         <p className="text-sm ">Themes:</p>
         <select
           value={theme}
-          className="bg-transparent text-sm rounded-sm bg-blue-500 cursor-pointer "
+          className="bg-transparent w-fit text-sm rounded-sm bg-blue-500 cursor-pointer relative "
           onChange={handleChange}
           name="themes"
           id="themes"

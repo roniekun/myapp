@@ -6,11 +6,12 @@ import { useAppSelector, useAppDispatch } from "@/app/redux/hooks/hooks";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import { setToggleMenu } from "@/app/redux/slices/MenuSlice";
-import ToggleThemeButton from "../common/buttons/ToggleThemeButton";
 import LinkItems from "../lib/LinkItems";
+import ExitMenuButton from "../common/buttons/ExitMenuButton";
 
 const Navbar = () => {
   const isOpen = useAppSelector((state) => state.menu.isMenuOpen);
+  const theme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (isOpen) {
@@ -32,8 +33,10 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed h-screen bg-[--background] text-[--text-color-primary] top-0 right-0 w-full p-4 justify-center items-center"
+            style={{ background: theme === "light" ? "#E8E8E8" : "#171819" }}
+            className="fixed z-10 h-screen   text-[--text-color-primary] top-0 right-0 w-full p-4 justify-center items-center"
           >
+            <ExitMenuButton />
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -42,7 +45,7 @@ const Navbar = () => {
             >
               <Container className="flex-col w-full justify-center items-center py-10 gap-3">
                 <MenuItems
-                  className="font-medium text-center text-xl w-fit hover:text-opacity-80"
+                  className="font-medium text-center text-3xl w-fit hover:text-opacity-80 transform duration-300 uppercase"
                   onClick={handleClick}
                 />
               </Container>
@@ -51,10 +54,7 @@ const Navbar = () => {
                   className="w-fit bg-black flex justify-center"
                   displayIcon
                 />
-              </Container>{" "}
-              <div className=" w-screen mt-20 flex justify-center items-center">
-                <ToggleThemeButton />
-              </div>
+              </Container>
             </motion.div>
           </motion.nav>
         )}

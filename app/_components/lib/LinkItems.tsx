@@ -1,28 +1,25 @@
 import React from "react";
 import Link from "next/link";
+import { user } from "@/app/_lib/constants";
 import { twMerge } from "tailwind-merge";
-import { FaSquareFacebook } from "react-icons/fa6";
+import { FaFacebookF } from "react-icons/fa6";
 import { FiInstagram } from "react-icons/fi";
 import { RxGithubLogo } from "react-icons/rx";
-import { BsLinkedin } from "react-icons/bs";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { IoMdMail } from "react-icons/io";
 
 interface LinkItemsProps {
   className?: string;
   displayIcon?: boolean;
+  size?: number;
 }
 
-const size = 15;
-
+const size = 18;
 export const links = [
   {
-    name: "Facebook",
-    path: "https://www.facebook.com",
-    icon: <FaSquareFacebook size={size} />,
-  },
-  {
-    name: "Instagram",
-    path: "https://www.instagram.com",
-    icon: <FiInstagram size={size} />,
+    name: "LinkedIn",
+    path: "https://www.linkedin.com",
+    icon: <FaLinkedinIn size={size} />,
   },
   {
     name: "Github",
@@ -30,9 +27,19 @@ export const links = [
     icon: <RxGithubLogo size={size} />,
   },
   {
+    name: "Facebook",
+    path: "https://www.facebook.com",
+    icon: <FaFacebookF size={size} />,
+  },
+  {
+    name: "Instagram",
+    path: "https://www.instagram.com",
+    icon: <FiInstagram size={size} />,
+  },
+  {
     name: "LinkedIn",
-    path: "https://www.linkedin.com",
-    icon: <BsLinkedin size={size} />,
+    path: `mailto:${user.email}?subject=Website Development&body=Your message here...`,
+    icon: <IoMdMail size={size} />,
   },
 ];
 
@@ -41,7 +48,7 @@ const LinkItems: React.FC<LinkItemsProps> = ({ className, displayIcon }) => {
     <>
       {links.map((link, idx) => (
         <Link
-          className={twMerge(className,"bg-transparent")}
+          className={twMerge(className, "bg-transparent")}
           target="blank"
           key={idx}
           rel="noopener noreferrer"
