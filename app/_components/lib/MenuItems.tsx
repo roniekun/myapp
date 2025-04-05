@@ -11,6 +11,7 @@ interface MenuItemsProps {
 const MenuItems: React.FC<MenuItemsProps> = ({ className, onClick }) => {
   const pathname = usePathname();
   const links = [
+    { name: "Home", path: "/" },
     { name: "Works", path: "/collections" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
@@ -24,8 +25,8 @@ const MenuItems: React.FC<MenuItemsProps> = ({ className, onClick }) => {
             className={twMerge(
               className,
               `${
-                pathname === link.path && "text-blue-600"
-              } flex-1  hover:text-blue-600 hover:scale-105 font-semibold`
+                pathname === link.path && "text-green-500"
+              } flex-1  hover:text-green-500 hover:scale-105 font-semibold`
             )}
             key={idx}
             href={link.path}

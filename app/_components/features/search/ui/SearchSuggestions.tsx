@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
+import { MdOutlineSearch } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -140,10 +141,11 @@ const SearchSuggestionModal: React.FC = () => {
 
   return (
     <AnimatePresence>
-      <motion.div   
-      transition={{ duration: 0.3 }}
-              exit={{ y: -10 }} 
-              className="flex flex-col absolute z-50 top-full justify-center items-center mt-1 w-full py-3 px-2 left-0 rounded-md bg-zinc-200  backdrop-blur-sm shadow-md">
+      <motion.div
+        transition={{ duration: 0.3 }}
+        exit={{ y: -10 }}
+        className="flex flex-col absolute z-50 top-full justify-center items-center mt-1 w-full py-3 px-2 left-0 rounded-md bg-zinc-200  backdrop-blur-sm shadow-md"
+      >
         <ul className="relative flex flex-col w-full justify-center items-center rounded-b-md h-auto gap-y-1 ">
           <>
             {showOption && (
@@ -181,7 +183,7 @@ const SearchSuggestionModal: React.FC = () => {
 
                   <IoIosClose
                     size={20}
-                    className="cursor-pointer relative mr-3 text-zinc-700"
+                    className="cursor-pointer relative mr-3 text-zinc-700 rounded-r-full"
                     onClick={() => handleDelete(item.id)}
                   />
                 </>
@@ -196,11 +198,14 @@ const SearchSuggestionModal: React.FC = () => {
                     className={`${
                       (selectedIndex === idx || hoveredItem === idx) &&
                       "bg-neutral-900 bg-opacity-10 text-zinc-600"
-                    } cursor-pointer px-2 flex text-left relative flex-1text-zinc-800`}
+                    } cursor-pointer flex-1 px-2 w-full flex text-left relative flex-1text-zinc-800`}
                   >
                     {item.title}
                   </a>
-                  <span className="read-only" />
+                  <MdOutlineSearch
+                    size={20}
+                    className="cursor-pointer relative mr-3 text-zinc-700  rounded-r-full"
+                  />
                 </>
               )}
             </li>

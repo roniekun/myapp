@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./_styles/outfit-font.css";
 import "./_styles/n27-font.css";
+import "./_styles/dm-mono-font.css";
 import StateProvider from "@/app/_provider/StateProvider";
 import { user } from "@/app/_lib/constants";
 import Header from "./_components/layout/Header";

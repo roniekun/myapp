@@ -6,7 +6,7 @@ const SearchBar = () => {
   const isOpen = useAppSelector((state) => state.search.isOpenSearch);
 
   return (
-    <div className="fixed top-[50px] left-0 right-0 z-50 p-4">
+    <div className="fixed top-[50px] left-0 right-0 z-30 p-4">
       {isOpen && <SearchComponent />}
     </div>
   );

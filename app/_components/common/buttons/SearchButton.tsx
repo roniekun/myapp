@@ -10,7 +10,7 @@ const SearchButton = () => {
   };
 
   return (
-    <div>
+    <div className="rounded-full bg-opacity-5 bg-zinc-950 p-2">
       <MdOutlineSearch size={20} onClick={handleOpenSearch} />
     </div>
   );

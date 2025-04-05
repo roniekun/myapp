@@ -34,7 +34,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             style={{ background: theme === "light" ? "#E8E8E8" : "#171819" }}
-            className="fixed z-10 h-screen   text-[--text-color-primary] top-0 right-0 w-full p-4 justify-center items-center"
+            className="fixed z-50 h-screen   text-[--text-color-primary] top-0 right-0 w-full p-4 justify-center items-center"
           >
             <ExitMenuButton />
             <motion.div
